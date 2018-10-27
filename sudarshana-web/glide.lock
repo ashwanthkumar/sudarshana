@@ -1,6 +1,42 @@
-hash: c35a39a27ac7d285649c458cdf5326fdd5dafb9c61184eb7ba4925d463f3ffd1
-updated: 2018-10-27T12:09:51.206741+05:30
+hash: a92801a57e1a4c1226670bfd26438066ffbbed72d0201d0f18206df11ddbe496
+updated: 2018-10-27T12:22:55.551379+05:30
 imports:
+- name: github.com/boltdb/bolt
+  version: fd01fc79c553a8e99d512a07e8e0c63d4a3ccfc5
 - name: github.com/cayleygraph/cayley
   version: 431ee2850fa29f8f7dfa0de6a03c07237871d504
+  subpackages:
+  - clog
+  - graph
+  - graph/iterator
+  - graph/kv
+  - graph/kv/bolt
+  - graph/log
+  - graph/memstore
+  - graph/path
+  - graph/proto
+  - graph/shape
+  - internal/lru
+  - quad
+  - quad/pquads
+  - quad/pquads/pio
+  - schema
+  - voc
+  - voc/core
+  - voc/rdf
+  - voc/rdfs
+  - voc/schema
+  - writer
+- name: github.com/gogo/protobuf
+  version: e87afe3c25daf6fa321fed3705938e53672b0a3b
+  subpackages:
+  - gogoproto
+  - proto
+  - protoc-gen-gogo/descriptor
+- name: github.com/tylertreat/BoomFilters
+  version: 37e169ae37ed529d93ecacb509c0dc80078478fc
+- name: golang.org/x/sys
+  version: 062cd7e4e68206d8bab9b18396626e855c992658
+  subpackages:
+  - unix
 testImports: []
