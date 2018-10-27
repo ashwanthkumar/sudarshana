@@ -10,6 +10,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	"gopkg.in/src-d/go-parse-utils.v1"
 )
 
 type Schema struct {
@@ -41,9 +43,18 @@ func main() {
 
 	ast.Inspect(f, func(node ast.Node) bool {
 		switch y := node.(type) {
-		// case *ast.ImportSpec:
-		// 	pkgName := x.Path
-		// 	fmt.Println(pkgName)
+		case *ast.ImportSpec:
+			fmt.Println(y.Path.Value)
+			if strings.HasPrefix(y.Path.Value, "github.com") {
+				importer := parseutil.NewImporter()
+				pkgName, err := importer.Import(y.Path.Value)
+				if err != nil {
+					panic(err)
+				}
+				fmt.Println(pkgName)
+			} else {
+				fmt.Println(y.Path.Value)
+			}
 
 		case *ast.CallExpr:
 			switch z := y.Fun.(type) {
