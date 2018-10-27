@@ -4,63 +4,7 @@
         Search by Sudarshana
     </title>
     <link rel="stylesheet" href="prism-ghcolors.css">
-   <style type="text/css">
-        body{
-            margin: 0;
-            padding: 0;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-        }
-
-        #results{
-            width: 900px;
-            margin: auto;
-        }
-
-        .card-header {
-            padding:5px;
-            padding-left: 10px;
-            background-image: linear-gradient(-0deg, #ddd 0% ,#eee 100%);
-            color: #999;
-        }
-
-        .code-card {
-            margin-top: 30px; 
-            /* border: 2px solid rgb(224, 130, 142); */
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            /* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
-        }
-
-        pre{
-            counter-reset: line;
-        }
-        code{
-            counter-increment: line;
-            font-family: monospace;
-            font-size: 8px;
-        }
-        code:before{
-            content: counter(line);
-            margin: 30px;
-        }
-
-        #searchbar{
-            height: 50px;
-            background-image: linear-gradient(-70deg, #8A2387 0% ,#E94057 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #searchbar > input {
-            border: 0px;
-            height: 30px;
-            width: 300px;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="searchbar">
@@ -69,7 +13,12 @@
 
 <div id="results">
     <div class="code-card" id="card1">
-            <div class="card-header">github.com/extrasalt/domino/main.go</div>
+        <div></div>
+            <div class="card-header">
+                <span>github.com/extrasalt/domino/main.go</span>
+                <span>33 <i class="star"></i></span>
+            </div>
+
 <pre class='language-go'>
 <code>func (b blocksByStart) Less(i, j int) bool {</code>
 <code>    bi, bj := b[i], b[j]</code>
@@ -91,7 +40,10 @@
     </div>
     
     <div class="code-card" id="card2">
-<div class="card-header">github.com/extrasalt/domino/main.go</div>
+            <div class="card-header">
+                    <span>github.com/extrasalt/domino/main.go</span>
+                    <span>33 <i class="star"></i></span>
+                </div>
 <pre class='language-go'>
 <code >func (b boundariesByPos) Less(i, j int) bool {</code>
 <code>    if b[i].Offset == b[j].Offset {</code>
