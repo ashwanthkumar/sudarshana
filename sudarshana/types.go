@@ -13,6 +13,20 @@ func GetAllPositions(exprs []Expr) []token.Pos {
 	return positions
 }
 
+// Meta represents the metadata for the SourceFile
+type Meta struct {
+	Source string `json:"source"`
+}
+
+// SourceFile represents the parsed AST for the given file
+type SourceFile struct {
+	Meta    Meta   `json:"meta"`
+	Path    string `json:"path"`
+	Package string `json:"package"`
+	File    string `json:"file"`
+	Exprs   []Expr `json:"lines"`
+}
+
 // Base type of all Expressions
 type Expr interface {
 	Scope() string

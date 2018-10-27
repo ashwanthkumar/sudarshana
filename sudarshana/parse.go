@@ -9,16 +9,12 @@ import (
 	"go/parser"
 	"go/token"
 	"io/ioutil"
+	"log"
 	"os"
-)
+	"strings"
 
-type Expression struct {
-	Name         string
-	Pos          token.Pos
-	Type         string
-	VariableType string
-	Scope        string
-}
+	parseutil "gopkg.in/src-d/go-parse-utils.v1"
+)
 
 type Declaration struct {
 	Label        string        `json:"label"`
@@ -44,7 +40,32 @@ func getReceiverType(fset *token.FileSet, decl *ast.FuncDecl) (string, error) {
 	return buf.String(), nil
 }
 
-func parse(inputFile string) {
+func parse(inputPackage string) {
+	importer := parseutil.NewImporter()
+	pkg, err := importer.Import(inputPackage)
+	if err == nil {
+		// fmt.Printf("pkg=%s\n", pkg.Path())
+		// fmt.Printf("Name=%s\n", pkg.Name())
+		dir, err := os.Open(pkg.Path())
+		if err != nil {
+			log.Fatalf("%q", err)
+		}
+		files, err := dir.Readdir(100)
+		if err != nil {
+			log.Fatalf("%q", err)
+		}
+		for _, file := range files {
+			if !file.IsDir() && strings.HasSuffix(file.Name(), ".go") && !strings.HasSuffix(file.Name(), "_test.go") {
+				// path := pkg.Path() + "/" + file.Name()
+				// fmt.Printf("visited file or dir: %q\n", path)
+				parsefile(pkg.Name(), pkg.Path(), file.Name())
+			}
+		}
+	}
+}
+
+func parsefile(packageName string, directory string, filename string) {
+	inputFile := directory + "/" + filename
 	sourceFile, err := os.Open(inputFile)
 	src, err := ioutil.ReadAll(sourceFile)
 
@@ -54,43 +75,54 @@ func parse(inputFile string) {
 		panic(err)
 	}
 
-	visitor := NewASTVisitor(fset)
+	visitor := NewASTVisitor(fset, inputFile)
 	ast.Walk(visitor, fileAst)
 	expressions := visitor.NewExprs
 
-	// fmt.Printf("Length=%d\n", len(expressions))
-	for _, expr := range expressions {
-		// fmt.Printf("%s --- %s -- %s --- %s --- %d\n", expr.Type, expr.VariableType, expr.Scope, expr.Name, fset.Position(expr.Pos).Offset)
-		outAsJson, err := json.Marshal(expr)
-		if err == nil {
-			fmt.Printf("%s\n", string(outAsJson))
-		}
+	meta := Meta{"github.com"}
+	source := SourceFile{
+		Meta:    meta,
+		Path:    inputFile,
+		Package: packageName,
+		File:    filename,
 	}
+
+	source.Exprs = expressions
+
+	// fmt.Printf("Length=%d\n", len(expressions))
+	// for _, expr := range expressions {
+	// fmt.Printf("%s --- %s -- %s --- %s --- %d\n", expr.Type, expr.VariableType, expr.Scope, expr.Name, fset.Position(expr.Pos).Offset)
+	outAsJSON, err := json.Marshal(source)
+	if err == nil {
+		fmt.Printf("%s\n", string(outAsJSON))
+	}
+	// }
 }
 
 type ASTVisitor struct {
-	Expressions []Expression
-	NewExprs    []Expr
-	fset        *token.FileSet
-	visited     map[string]interface{}
-	currentFunc string
+	InputFile      string
+	NewExprs       []Expr
+	fset           *token.FileSet
+	visited        map[string]interface{}
+	currentFunc    string
+	fullPathToFile string
 }
 
-func NewASTVisitor(fset *token.FileSet) *ASTVisitor {
+func NewASTVisitor(fset *token.FileSet, fullPathToFile string) *ASTVisitor {
 	return &ASTVisitor{
-		Expressions: []Expression{},
-		fset:        fset,
-		visited:     make(map[string]interface{}),
+		fset:           fset,
+		visited:        make(map[string]interface{}),
+		fullPathToFile: fullPathToFile,
 	}
 }
 
-func (a *ASTVisitor) Key(node ast.Node) string {
-	return fmt.Sprintf("%d", node.Pos())
+func (a *ASTVisitor) Key(pos token.Pos) string {
+	return fmt.Sprintf("%d", pos)
 }
 
 func (a *ASTVisitor) Visit(node ast.Node) ast.Visitor {
 	if node != nil {
-		key := a.Key(node)
+		key := a.Key(node.Pos())
 		// fmt.Printf("I'm at offset=%d, key=%s\n", a.fset.Position(node.Pos()).Offset, key)
 		_, seenAlready := a.visited[key]
 		if !seenAlready {
@@ -108,20 +140,11 @@ func (a *ASTVisitor) Visit(node ast.Node) ast.Visitor {
 				a.currentFunc = ""
 			}
 
-			expressions := parseNode(node, a.currentFunc)
-			for _, expr := range expressions {
-				// fmt.Printf("Found %s --- %d\n", expr.Name, a.fset.Position(expr.Pos).Offset)
-				keyForExpr := fmt.Sprintf("%d", expr.Pos)
-				a.visited[keyForExpr] = nil
-			}
-
-			a.Expressions = append(a.Expressions, expressions...)
-
-			exp := parseNode2(node, a.currentFunc)
+			exp := parseNode2(node, a.currentFunc, a.fullPathToFile)
 			if nil != exp {
 				a.NewExprs = append(a.NewExprs, exp)
 				for _, pos := range exp.AllPos() {
-					keyForExpr := fmt.Sprintf("%d", pos)
+					keyForExpr := a.Key(pos)
 					a.visited[keyForExpr] = nil
 				}
 				// fmt.Printf("%v\n", exp)
@@ -166,7 +189,13 @@ func asBasicLit(in ast.Node) (*ast.BasicLit, bool) {
 	}
 }
 
-func parseNode2(node ast.Node, scope string) Expr {
+var importMappingCache map[string]string
+
+func init() {
+	importMappingCache = make(map[string]string)
+}
+
+func parseNode2(node ast.Node, scope string, fullPathToFile string) Expr {
 	// expressions := []Expr{}
 	// fmt.Printf("%s -- %v\n", reflect.TypeOf(node), node)
 	switch expr := node.(type) {
@@ -187,8 +216,10 @@ func parseNode2(node ast.Node, scope string) Expr {
 
 					switch r := expr.Rhs[0].(type) {
 					case *ast.CompositeLit:
-						typeOfVariable := r.Type.(*ast.Ident)
-						lExpression.Reference = typeOfVariable.String()
+						switch rType := r.Type.(type) {
+						case *ast.Ident:
+							lExpression.Reference = rType.String()
+						}
 					}
 
 					leftExprs = append(leftExprs, lExpression)
@@ -199,34 +230,37 @@ func parseNode2(node ast.Node, scope string) Expr {
 		var rhs Expr
 		switch r := expr.Rhs[0].(type) {
 		case *ast.CompositeLit:
-			typeOfVariable := r.Type.(*ast.Ident)
-			createStruct := ConstructStruct{
-				Type:   "constructstruct",
-				Offset: expr.Pos(),
-				CScope: scope,
-				Struct: typeOfVariable.String(),
-			}
+			switch rType := r.Type.(type) {
+			case *ast.Ident:
+				typeOfVariable := rType
+				createStruct := ConstructStruct{
+					Type:   "constructstruct",
+					Offset: expr.Pos(),
+					CScope: scope,
+					Struct: typeOfVariable.String(),
+				}
+				createStruct.KeyValueArgs = make(map[string]string)
 
-			for _, elt := range r.Elts {
-				eltAsKV, ok := asKeyValueExpr(elt)
-				if ok {
-					key, _ := toIdentText(eltAsKV.Key)
-					value, _ := toIdentText(eltAsKV.Value)
-					createStruct.KeyValueArgs[key] = value
-				} else {
-					eltAsBasic, ok := asBasicLit(elt)
+				for _, elt := range r.Elts {
+					eltAsKV, ok := asKeyValueExpr(elt)
 					if ok {
-						createStruct.Args = append(createStruct.Args, eltAsBasic.Value)
+						key, _ := toIdentText(eltAsKV.Key)
+						value, _ := toIdentText(eltAsKV.Value)
+						createStruct.KeyValueArgs[key] = value
+					} else {
+						eltAsBasic, ok := asBasicLit(elt)
+						if ok {
+							createStruct.Args = append(createStruct.Args, eltAsBasic.Value)
+						}
 					}
 				}
+				rhs = createStruct
 			}
-			rhs = createStruct
-
 		}
 
 		// attempt to parse the values
 		if nil == rhs {
-			rhs = parseNode2(expr.Rhs[0], scope)
+			rhs = parseNode2(expr.Rhs[0], scope, fullPathToFile)
 		}
 		assignment := Assignment{
 			Lefts:  leftExprs,
@@ -251,6 +285,22 @@ func parseNode2(node ast.Node, scope string) Expr {
 			xAsIdent, ok := funSelector.X.(*ast.Ident)
 			if ok {
 				f.Reference = xAsIdent.String()
+				cacheValue, alreadyInCache := importMappingCache[xAsIdent.String()]
+				if alreadyInCache {
+					f.Reference = cacheValue
+				} else {
+					// TODO: Invoke Guru and see if we can get the canonical name of this reference
+					query := fmt.Sprintf("%s:#%d", fullPathToFile, funSelector.Pos())
+					packageReference := guru_describe(query)
+					// fmt.Printf("query=%s\noutput=%q\n", query, packageReference)
+					if nil != packageReference && nil != packageReference.Package {
+						if "" != packageReference.Package.Path {
+							resolvedPath := resolveGuruPath(packageReference.Package.Path)
+							importMappingCache[xAsIdent.String()] = resolvedPath
+							f.Reference = resolvedPath
+						}
+					}
+				}
 			}
 			f.Name = funSelector.Sel.String()
 		} else {
@@ -270,7 +320,7 @@ func parseNode2(node ast.Node, scope string) Expr {
 				}
 				f.Args = append(f.Args, v)
 			default:
-				otherExpr := parseNode2(arg, scope)
+				otherExpr := parseNode2(arg, scope, fullPathToFile)
 				if nil != otherExpr {
 					f.Args = append(f.Args, otherExpr)
 				}
@@ -293,66 +343,13 @@ func parseNode2(node ast.Node, scope string) Expr {
 	return nil
 }
 
-func parseNode(node ast.Node, scope string) []Expression {
-	// fmt.Printf("%s -- %v\n", reflect.TypeOf(node), node)
-	expressions := []Expression{}
-	switch expr := node.(type) {
-	case *ast.CallExpr:
-		funcAstExpressions := parseNode(expr.Fun, scope)
-		updatedFuncAsts := make([]Expression, len(funcAstExpressions))
-		for idx, f := range funcAstExpressions {
-			f.Type = "function"
-			updatedFuncAsts[idx] = f
-		}
-		for _, argExpr := range expr.Args {
-			// fmt.Printf("%v\n", argExpr)
-			e := parseNode(argExpr, scope)
-			expressions = append(expressions, e...)
-		}
-		expressions = append(expressions, updatedFuncAsts...)
-	case *ast.SelectorExpr:
-		xAsIdent, ok := expr.X.(*ast.Ident)
-		if ok {
-			e := Expression{
-				Name:  xAsIdent.String() + "#" + expr.Sel.String(),
-				Pos:   xAsIdent.Pos(),
-				Type:  "reference",
-				Scope: scope,
-			}
-			expressions = append(expressions, e)
-		}
-	case *ast.AssignStmt:
-		for _, lhs := range expr.Lhs {
-			var lExpression Expression
-			switch l := lhs.(type) {
-			case *ast.Ident:
-				// ignore the _ names, we don't care mostly
-				if l.String() != "_" {
-					lExpression = Expression{
-						Name:  l.String(),
-						Type:  "variable",
-						Pos:   l.Pos(),
-						Scope: scope,
-					}
-
-					switch r := expr.Rhs[0].(type) {
-					case *ast.CompositeLit:
-						typeOfVariable := r.Type.(*ast.Ident)
-						lExpression.VariableType = typeOfVariable.String()
-					}
-					expressions = append(expressions, lExpression)
-				}
-			}
-		}
-		// for _, rhs := range expr.Rhs {
-		// 	e := parseNode(rhs)
-		// 	expressions = append(expressions, e...)
-		// }
-	default:
-		// do nothing
+func resolveGuruPath(guruPath string) string {
+	if strings.Contains(guruPath, "/vendor/") {
+		// we've a vendored path, filter things before /vendor/ to get the import path
+		return strings.Split(guruPath, "/vendor/")[1]
 	}
 
-	return expressions
+	return guruPath
 }
 
 func outline(fset *token.FileSet, fileAst *ast.File) []Declaration {

@@ -7,11 +7,22 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"path/filepath"
 )
 
 type GuruWhatResult struct {
 	Srcdir  string `json:"srcdir"`
 	Package string `json:"importpath"`
+}
+
+type GuruPackageReference_Package struct {
+	Path string `json:"path"`
+}
+type GuruPackageReference struct {
+	Desc    string                        `json:"desc"`
+	Pos     string                        `json:"pos"`
+	Detail  string                        `json:"detail"`
+	Package *GuruPackageReference_Package `json:"package"`
 }
 
 func main() {
@@ -33,6 +44,10 @@ func main() {
 		panic("TODO: Yet to implement")
 	case "parse":
 		parse(file)
+	case "parsefile":
+		fileloc := filepath.Base(file)
+		dir := filepath.Dir(file)
+		parsefile("", dir, fileloc)
 	default:
 		fmt.Printf("Mode=%s is not recognized", mode)
 		os.Exit(2)
@@ -63,4 +78,32 @@ func ranks(inputFile string) string {
 	}
 	// fmt.Printf("%s", output)
 	return string(output)
+}
+
+func guru_describe(query string) *GuruPackageReference {
+	cmd := exec.Command("guru", "-json", "describe", query)
+	var out bytes.Buffer
+	cmd.Stdout = &out
+	err := cmd.Run()
+	// if err != nil {
+	// log.Fatal(err)
+	// }
+	var result *GuruPackageReference
+	if err == nil {
+		json.Unmarshal(out.Bytes(), &result)
+	}
+	// if err != nil {
+	// log.Fatal(err)
+	// }
+	// if result.Package == "" {
+	// 	return ""
+	// }
+	// // TODO: result now has the Package which should be used to identify the sorted list of methods for the package
+	// output, err := json.Marshal(result)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// // fmt.Printf("%s", output)
+	// return string(output)
+	return result
 }
