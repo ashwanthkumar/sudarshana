@@ -136,6 +136,8 @@ func main() {
 
 		return true
 	})
+
+	ast.Print(fset, f)
 }
 
 //

@@ -1,0 +1,113 @@
+<html>
+<head>
+    <title>
+        Search by Sudarshana
+    </title>
+    <link rel="stylesheet" href="prism-ghcolors.css">
+   <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+
+        #results{
+            width: 900px;
+            margin: auto;
+        }
+
+        .card-header {
+            padding:5px;
+            padding-left: 10px;
+            background-image: linear-gradient(-0deg, #ddd 0% ,#eee 100%);
+            color: #999;
+        }
+
+        .code-card {
+            margin-top: 30px; 
+            /* border: 2px solid rgb(224, 130, 142); */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            /* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
+        }
+
+        pre{
+            counter-reset: line;
+        }
+        code{
+            counter-increment: line;
+            font-family: monospace;
+            font-size: 8px;
+        }
+        code:before{
+            content: counter(line);
+            margin: 30px;
+        }
+
+        #searchbar{
+            height: 50px;
+            background-image: linear-gradient(-70deg, #8A2387 0% ,#E94057 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #searchbar > input {
+            border: 0px;
+            height: 30px;
+            width: 300px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+    </style>
+</head>
+<body>
+<div id="searchbar">
+    <input type="text">
+</div>
+
+<div id="results">
+    <div class="code-card" id="card1">
+            <div class="card-header">github.com/extrasalt/domino/main.go</div>
+<pre class='language-go'>
+<code>func (b blocksByStart) Less(i, j int) bool {</code>
+<code>    bi, bj := b[i], b[j]</code>
+<code>    return bi.StartLine < bj.StartLine || bi.StartLine == bj.StartLine && bi.StartCol < bj.StartCol</code>
+<code>}</code>
+<code></code>
+<code>var lineRe = regexp.MustCompile(`^(.+):([0-9]+).([0-9]+),([0-9]+).([0-9]+) ([0-9]+) ([0-9]+)$`)</code>
+<code></code>
+<code>func toInt(s string) int {</code>
+<code>    i, err := strconv.Atoi(s)</code>
+<code>    if err != nil {</code>
+<code>        panic(err)</code>
+<code>    }</code>
+<code>    return i</code>
+<code>}</code>
+            
+</pre>
+        
+    </div>
+    
+    <div class="code-card" id="card2">
+<div class="card-header">github.com/extrasalt/domino/main.go</div>
+<pre class='language-go'>
+<code >func (b boundariesByPos) Less(i, j int) bool {</code>
+<code>    if b[i].Offset == b[j].Offset {</code>
+<code>        return !b[i].Start && b[j].Start</code>
+<code>    }</code>
+<code>    return b[i].Offset < b[j].Offset</code>
+<code>}</code>
+</pre>
+        
+    </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-go.min.js"></script>
+
+
+    
+</body>
+</html>
