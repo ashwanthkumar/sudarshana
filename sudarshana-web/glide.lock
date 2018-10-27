@@ -1,0 +1,6 @@
+hash: c35a39a27ac7d285649c458cdf5326fdd5dafb9c61184eb7ba4925d463f3ffd1
+updated: 2018-10-27T12:09:51.206741+05:30
+imports:
+- name: github.com/cayleygraph/cayley
+  version: 431ee2850fa29f8f7dfa0de6a03c07237871d504
+testImports: []

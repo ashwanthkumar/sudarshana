@@ -1,0 +1,4 @@
+package: github.com/ashwanthkumar/devmerge_2k18/sudarshana-web
+import:
+- package: github.com/cayleygraph/cayley
+  version: 0.7.4
