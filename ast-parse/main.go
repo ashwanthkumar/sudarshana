@@ -48,27 +48,30 @@ func main() {
 		case *ast.CallExpr:
 			switch z := y.Fun.(type) {
 			case *ast.SelectorExpr:
-				switch x := z.X.(type) {
-				case *ast.Ident:
-
-					name, lineNumber, offset := getNameLinePos(fset.Position(x.NamePos))
-
-					var kindStr string
-					if x.Obj != nil {
-						kindStr = x.Obj.Kind.String()
-					}
-					s := Schema{
-						Name:   x.Name,
-						Source: name,
-						Line:   lineNumber,
-						Offset: offset,
-						Kind:   kindStr,
-					}
-
-					j, _ := json.MarshalIndent(s, "", "\t")
-					fmt.Println(string(j))
-
+				x, ok := z.X.(*ast.Ident)
+				if !ok {
+					return false
 				}
+				pkg := x.Name
+				sel := z.Sel
+
+				name, lineNumber, offset := getNameLinePos(fset.Position(sel.NamePos))
+				var kindStr string
+				if x.Obj != nil {
+					kindStr = sel.Obj.Kind.String()
+				}
+				s := Schema{
+					Name:    sel.Name,
+					Source:  name,
+					Line:    lineNumber,
+					Offset:  offset,
+					Package: pkg,
+					Kind:    kindStr,
+				}
+
+				j, _ := json.MarshalIndent(s, "", "\t")
+				fmt.Println(string(j))
+
 			}
 		}
 
