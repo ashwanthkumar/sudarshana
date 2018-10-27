@@ -1,0 +1,8 @@
+hash: cb36bc78ca785dfd1b26c212565ba0f6e09d3498aed583990c40727d3d103c26
+updated: 2018-10-27T14:52:10.572447+05:30
+imports:
+- name: github.com/gorilla/mux
+  version: 521ea7b17d02faf8d3afea6737573942ceac59c5
+- name: gopkg.in/src-d/go-parse-utils.v1
+  version: 9683a7e3ea92c53242795b2c51900c1220087788
+testImports: []
