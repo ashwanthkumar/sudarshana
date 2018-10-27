@@ -51,16 +51,7 @@ func main() {
 				switch x := z.X.(type) {
 				case *ast.Ident:
 
-					NameWithPos := fset.Position(x.NamePos).String()
-					NameWithPosSlice := strings.Split(NameWithPos, ":")
-					lineNumber, err := strconv.ParseInt(NameWithPosSlice[1], 10, 64)
-					if err != nil {
-						fmt.Errorf(err.Error())
-					}
-					offset, err := strconv.ParseInt(NameWithPosSlice[2], 10, 64)
-					if err != nil {
-						fmt.Errorf(err.Error())
-					}
+					name, lineNumber, offset := getNameLinePos(fset.Position(x.NamePos))
 
 					var kindStr string
 					if x.Obj != nil {
@@ -68,7 +59,7 @@ func main() {
 					}
 					s := Schema{
 						Name:   x.Name,
-						Source: NameWithPosSlice[0],
+						Source: name,
 						Line:   lineNumber,
 						Offset: offset,
 						Kind:   kindStr,
@@ -83,6 +74,20 @@ func main() {
 
 		return true
 	})
-	// ast.Print(fset, f)
-	// spew.Dump(f)
+}
+
+func getNameLinePos(pos token.Position) (string, int64, int64) {
+
+	NameWithPosSlice := strings.Split(pos.String(), ":")
+	name := NameWithPosSlice[0]
+	lineNumber, err := strconv.ParseInt(NameWithPosSlice[1], 10, 64)
+	if err != nil {
+		fmt.Errorf(err.Error())
+	}
+	offset, err := strconv.ParseInt(NameWithPosSlice[2], 10, 64)
+	if err != nil {
+		fmt.Errorf(err.Error())
+	}
+
+	return name, lineNumber, offset
 }
