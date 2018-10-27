@@ -31,6 +31,8 @@ func main() {
 		fmt.Printf("%s", output)
 	case "popular":
 		panic("TODO: Yet to implement")
+	case "parse":
+		parse(file)
 	default:
 		fmt.Printf("Mode=%s is not recognized", mode)
 		os.Exit(2)
