@@ -14,10 +14,10 @@
     "line": 5,
     "offset": 4,
     "kind": "func",
-    "package": "github.com/gionic/gin",
-    "name": "Default",
+    "package": "github.com/gorilla/mux",
+    "struct": "Router",
+    "name": "HandleFunc",
     "arguments": ["foo", "bar"]
   }]
 }
 ```
-
