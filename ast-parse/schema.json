@@ -1,0 +1,14 @@
+{
+  "source": "main.go",
+  "line": 5,
+  "offset": 4,
+  "kind": "func",
+  "package": "github.com/gionic/gin",
+  "name": "Default",
+  "meta": {
+    "source": "github",
+    "repo": "https://github.com/ashwanthkumar/gotlb",
+    "stars": 1,
+    "forks": 1
+  }
+}
