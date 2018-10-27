@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"go/ast"
 	"go/parser"
@@ -50,7 +51,13 @@ func NewASTWalk(fset *token.FileSet, fileAst *ast.File) *ASTWalk {
 
 func (a *ASTWalk) Walk(f func(ast.Node, *ASTWalk) bool) {
 	ast.Inspect(a.fileAst, func(node ast.Node) bool {
-		key := a.fset.Position(node.Pos()).String() + ":" + a.fset.Position(node.End()).String()
+		if nil == node {
+			return false
+		}
+		// fmt.Println(a.fset.Position(node.Pos()))
+		start := a.fset.Position(node.Pos()).String()
+		end := a.fset.Position(node.End()).String()
+		key := start + ":" + end
 		_, present := a.visited[key]
 		if present {
 			return true
@@ -77,8 +84,8 @@ func main() {
 	}
 
 	var importsMapping = make(map[string]string)
-	// var symbolTables = make(map[string]*SymbolTable)
-	// var activeFunc = "" // by default we're nowhere
+	var symbolTables = make(map[string]*SymbolTable)
+	var activeFunc = "" // by default we're nowhere
 
 	astWalk := NewASTWalk(fset, f)
 	astWalk.Walk(func(node ast.Node, ctx *ASTWalk) bool {
@@ -96,10 +103,39 @@ func main() {
 				// fmt.Println(y.Path.Value)
 				importsMapping[y.Path.Value] = y.Path.Value
 			}
+
+		case *ast.CallExpr:
+			fmt.Printf("In func -- %s, and my symbolTable=%v\n", activeFunc, symbolTables[activeFunc])
+			switch z := y.Fun.(type) {
+			case *ast.SelectorExpr:
+				x, ok := z.X.(*ast.Ident)
+				if !ok {
+					return false
+				}
+				pkg := x.Name
+				sel := z.Sel
+
+				name, lineNumber, offset := getNameLinePos(fset.Position(sel.NamePos))
+				var kindStr string
+				if x.Obj != nil {
+					kindStr = sel.Obj.Kind.String()
+				}
+				s := Schema{
+					Name:    sel.Name,
+					Source:  name,
+					Line:    lineNumber,
+					Offset:  offset,
+					Package: pkg,
+					Kind:    kindStr,
+				}
+
+				j, _ := json.MarshalIndent(s, "", "\t")
+				fmt.Println(string(j))
+			}
 		}
+
 		return true
 	})
-
 }
 
 //
