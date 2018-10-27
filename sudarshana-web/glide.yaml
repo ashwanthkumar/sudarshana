@@ -4,3 +4,5 @@ import:
   version: 0.7.4
   subpackages:
   - graph
+- package: github.com/gin-gonic/gin
+  version: 1.3.0

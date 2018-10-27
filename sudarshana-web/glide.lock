@@ -1,5 +1,5 @@
-hash: a92801a57e1a4c1226670bfd26438066ffbbed72d0201d0f18206df11ddbe496
-updated: 2018-10-27T12:22:55.551379+05:30
+hash: cd8319361fc0855efb83bce24a1e149bbc67cf3513105169cc20ddb39d149ecd
+updated: 2018-10-28T00:45:57.625895+05:30
 imports:
 - name: github.com/boltdb/bolt
   version: fd01fc79c553a8e99d512a07e8e0c63d4a3ccfc5
@@ -27,6 +27,8 @@ imports:
   - voc/rdfs
   - voc/schema
   - writer
+- name: github.com/gin-gonic/gin
+  version: b869fe1415e4b9eb52f247441830d502aece2d4d
 - name: github.com/gogo/protobuf
   version: e87afe3c25daf6fa321fed3705938e53672b0a3b
   subpackages:
