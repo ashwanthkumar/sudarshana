@@ -1,0 +1,1060 @@
+Logger	Printf	"Logger.Printf(\"producer/leader/%s/%d state change to [retrying-%d]\\n\", pp.topic, pp.partition, hwm)"
+Logger	Printf	"Logger.Printf(\"client/coordinator request to broker %s failed: %s\\n\", broker.Addr(), err)"
+Logger	Printf	"Logger.Printf(\"producer/broker/%d state change to [closed] on %s/%d\\n\",
+	bp.broker.ID(), msg.Topic, msg.Partition)"
+Logger	Printf	"Logger.Printf(\"client/coordinator coordinator for consumergroup %s is #%d (%s)\\n\", consumerGroup, response.Coordinator.ID(), response.Coordinator.Addr())"
+Logger	Printf	"Logger.Printf(\"Retrying batch for %v-%d because of %s\\n\", topic, partition, kerr)"
+Logger	Printf	"Logger.Printf(\"producer/leader/%s/%d state change to [retrying-%d]\\n\", pp.topic, pp.partition, pp.highWatermark)"
+Logger	Println	"Logger.Println(\"Consumer.Offsets.Retention only supports millisecond precision; nanoseconds will be truncated.\")"
+Logger	Println	"Logger.Println(\"Net.SASL is disabled but a non-empty password was provided.\")"
+Logger	Println	"Logger.Println(\"Producer.Flush: Bytes or Messages are set, but Frequency is not; messages may not get flushed.\")"
+Logger	Println	"Logger.Println(\"client/metadata no available broker to send metadata request to\")"
+Logger	Println	"Logger.Println(\"client/metadata found some partitions to be leaderless\")"
+Logger	Println	"Logger.Println(\"Consumer.MaxWaitTime only supports millisecond precision; nanoseconds will be truncated.\")"
+a	scanBytes	a.scanBytes([]byte(src))
+a	scanBytes	a.scanBytes(src)
+a	scanBytes	a.scanBytes(src, dv)
+a	scanBytes	a.scanBytes([]byte(src), dv)
+association	setErr	association.setErr(results.Error)
+association	setErr	"association.setErr(errors.New(\"invalid value type\"))"
+association	setErr	association.setErr(scope.NewDB().Save(reflectValue.Interface()).Error)
+association	setErr	association.setErr(association.scope.db.Error)
+association	setErr	association.setErr(relationship.JoinTableHandler.Delete(relationship.JoinTableHandler, newDB))
+association	setErr	association.setErr(newDB.Model(fieldValue).UpdateColumn(foreignKeyMap).Error)
+atomic	StoreUint32	atomic.StoreUint32(&n.loading, uint32(time.Now().Unix()))
+atomic	StoreUint32	atomic.StoreUint32((*uint32)(&logger.Level), uint32(level))
+atomic	StoreUint32	atomic.StoreUint32(&c.reloading, 0)
+atomic	StoreUint32	atomic.StoreUint32(&p.chInitialized, 1)
+atomic	StoreUint32	atomic.StoreUint32(&n.latency, latency)
+atomic	StoreUint32	atomic.StoreUint32(&n.loading, 0)
+b	string	b.string(err.Error())
+b	string	b.string(q)
+b	string	b.string(query)
+b	string	b.string(st.name)
+b	next	b.next('D')
+b	next	b.next('E')
+b	next	b.next(1)
+b	next	b.next('S')
+b	next	b.next('B')
+b	int16	b.int16(len(paramFormats))
+b	int16	b.int16(0)
+b	int16	b.int16(len(args))
+b	int16	b.int16(x)
+b	WriteByte	b.WriteByte('=')
+b	WriteByte	b.WriteByte('\n')
+b	WriteByte	b.WriteByte(' ')
+b	byte	b.byte('S')
+b	byte	b.byte(0)
+b	byte	b.byte('P')
+b	Bytes	b.Bytes()
+b	WriteString	b.WriteString(key)
+b	WriteString	b.WriteString(stringVal)
+b	WriteString	"b.WriteString(fmt.Sprintf(\"%q\", stringVal))"
+b	WriteString	b.WriteString(key.Type())
+b	int32	b.int32(len(datum))
+b	int32	b.int32(-1)
+b	int32	b.int32(0)
+b	checkSuccess	b.checkSuccess(action, berr, lerr, err)
+best	RUnlock	best.RUnlock()
+bp	rollOver	bp.rollOver()
+bp	handleResponse	bp.handleResponse(response)
+broker	ID	broker.ID()
+bson	Unmarshal	bson.Unmarshal(d, result)
+bson	Unmarshal	bson.Unmarshal(data, &res)
+bson	Unmarshal	bson.Unmarshal(replyData, &result)
+buf	WriteString	"buf.WriteString(\"\\t- \")"
+buf	WriteString	"buf.WriteString(\"multiple errors in bulk operation:\\n\")"
+buf	WriteString	"buf.WriteString(\") -> (\")"
+buf	WriteString	buf.WriteString(fin)
+buf	WriteString	buf.WriteString(sep)
+buf	WriteString	"buf.WriteString(\", \")"
+buf	WriteRune	buf.WriteRune('_')
+buf	WriteRune	buf.WriteRune(v)
+buf	WriteByte	buf.WriteByte('&')
+buf	WriteByte	buf.WriteByte('?')
+buf	WriteByte	buf.WriteByte(value[len(value)-1])
+buf	WriteByte	buf.WriteByte('\n')
+buf	String	buf.String()
+buffer	AppendByte	buffer.AppendByte(':')
+buffer	AppendByte	buffer.AppendByte('\t')
+buffer	AppendByte	buffer.AppendByte('\n')
+bufio	NewWriter	bufio.NewWriter(rwc)
+bufio	NewWriter	bufio.NewWriter(netConn)
+bufio	NewReader	bufio.NewReader(netConn)
+bufio	NewReader	bufio.NewReader(rwc)
+bytes	Equal	bytes.Equal(exp, act)
+bytes	Equal	bytes.Equal(p, sentinel)
+bytes	Equal	bytes.Equal(k.pubKeyData, pubKeyData)
+bytes	Equal	"bytes.Equal(elem, []byte(\"NULL\"))"
+bytes	Equal	bytes.Equal(key.Marshal(), f.key.Marshal())
+bytes	Equal	bytes.Equal(value.handle, emitter.tag_directives[i].handle)
+bytes	HasPrefix	"bytes.HasPrefix(versionString, []byte(\"SSH-\"))"
+bytes	HasPrefix	bytes.HasPrefix(tag, tag_directive.prefix)
+bytes	HasPrefix	bytes.HasPrefix(src[i:], del)
+c	process	c.process(cmd)
+c	Render	c.Render(code, render.JsonpJSON{Callback: callback, Data: obj})
+c	Render	c.Render(code, instance)
+c	Render	c.Render(code, render.JSON{Data: obj})
+c	Render	c.Render(code, render.IndentedJSON{Data: obj})
+c	Render	c.Render(code, render.SecureJSON{Prefix: c.engine.secureJsonPrefix, Data: obj})
+c	Render	c.Render(code, render.PureJSON{Data: obj})
+c	handleProtocolError	"c.handleProtocolError(\"invalid utf8 payload in close frame\")"
+c	handleProtocolError	"c.handleProtocolError(\"unknown opcode \" + strconv.Itoa(frameType))"
+c	handleProtocolError	"c.handleProtocolError(\"control frame not final\")"
+c	handleProtocolError	"c.handleProtocolError(\"control frame length > 125\")"
+c	handleProtocolError	"c.handleProtocolError(\"message start before final message frame\")"
+c	handleProtocolError	"c.handleProtocolError(\"unexpected reserved bits 0x\" + strconv.FormatInt(int64(rsv), 16))"
+c	Process	c.Process(cmd)
+c	fatal	c.fatal(err)
+c	fatal	c.fatal(e)
+c	zAdd	c.zAdd(a, n, members...)
+c	Close	c.Close()
+c	Next	c.Next()
+c	MustBindWith	c.MustBindWith(obj, binding.XML)
+c	MustBindWith	c.MustBindWith(obj, binding.Query)
+c	MustBindWith	c.MustBindWith(obj, binding.JSON)
+c	MustBindWith	c.MustBindWith(obj, b)
+c	writeBytes	c.writeBytes(strconv.AppendInt(c.numScratch[:0], n, 10))
+c	writeBytes	c.writeBytes(strconv.AppendFloat(c.numScratch[:0], n, 'g', -1, 64))
+c	writeBytes	c.writeBytes(arg)
+c	writeBytes	c.writeBytes(buf.Bytes())
+c	cancel	c.cancel(true, DeadlineExceeded)
+c	cancel	c.cancel(true, Canceled)
+c	print	"c.print(\"Send\", commandName, args, nil, err)"
+c	print	"c.print(\"Do\", commandName, args, reply, err)"
+c	print	"c.print(\"DoWithTimeout\", commandName, args, reply, err)"
+c	print	"c.print(\"Receive\", \"\", nil, reply, err)"
+c	print	"c.print(\"ReceiveWithTimeout\", \"\", nil, reply, err)"
+c	ShouldBindWith	c.ShouldBindWith(obj, binding.Query)
+c	ShouldBindWith	c.ShouldBindWith(obj, b)
+c	ShouldBindWith	c.ShouldBindWith(obj, binding.XML)
+c	ShouldBindWith	c.ShouldBindWith(obj, binding.JSON)
+c	Unlock	c.Unlock()
+c	writeFatal	c.writeFatal(err)
+c	writeFatal	c.writeFatal(ErrCloseSent)
+c	releaseConn	c.releaseConn(cn, err)
+c	releaseConn	c.releaseConn(cn, err, false)
+c	releaseConn	c.releaseConn(cn, err, timeout > 0)
+c	bitOp	"c.bitOp(\"and\", destKey, keys...)"
+c	bitOp	"c.bitOp(\"xor\", destKey, keys...)"
+c	bitOp	"c.bitOp(\"not\", destKey, key)"
+c	bitOp	"c.bitOp(\"or\", destKey, keys...)"
+c	Lock	c.Lock()
+c	writeString	"c.writeString(\"\")"
+c	writeString	"c.writeString(\"0\")"
+c	writeString	c.writeString(arg)
+c	writeString	"c.writeString(\"1\")"
+c	Set	c.Set(AuthUserKey, user)
+c	Set	c.Set(BodyBytesKey, body)
+c	Set	c.Set(BindKey, obj)
+c	WriteControl	"c.WriteControl(CloseMessage, FormatCloseMessage(CloseMessageTooBig, \"\"), time.Now().Add(writeWait))"
+c	WriteControl	c.WriteControl(CloseMessage, FormatCloseMessage(CloseProtocolError, message), time.Now().Add(writeWait))
+c	WriteControl	c.WriteControl(CloseMessage, message, time.Now().Add(writeWait))
+c	reset	c.reset()
+c	printValue	c.printValue(&buf, arg)
+c	printValue	c.printValue(&buf, reply)
+c	printValue	c.printValue(buf, vv)
+c	JSON	c.JSON(code, data)
+c	JSON	c.JSON(-1, errors)
+c	JSON	c.JSON(code, jsonObj)
+c	checkMovedErr	c.checkMovedErr(cmd, err, failedCmds)
+c	AbortWithStatus	c.AbortWithStatus(http.StatusUnauthorized)
+c	AbortWithStatus	c.AbortWithStatus(http.StatusInternalServerError)
+c	AbortWithStatus	c.AbortWithStatus(code)
+c	writeLen	c.writeLen('$', len(s))
+c	writeLen	c.writeLen('*', 1+len(args))
+c	writeLen	c.writeLen('$', len(p))
+c	zIncr	c.zIncr(a, n, member)
+c	shutdown	"c.shutdown(\"nosave\")"
+c	shutdown	"c.shutdown(\"\")"
+c	shutdown	"c.shutdown(\"save\")"
+cb	method	cb.method()
+ce	Write	ce.Write(s.sweetenFields(context)...)
+ce	Write	ce.Write(fields...)
+ch	Reject	ch.Reject(ConnectionFailed, err.Error())
+ch	Reject	"ch.Reject(ConnectionFailed, \"could not parse forwarded-streamlocal@openssh.com payload: \"+err.Error())"
+ch	Reject	"ch.Reject(Prohibited, \"no forward for address\")"
+ch	Reject	"ch.Reject(ConnectionFailed, \"could not parse forwarded-tcpip payload: \"+err.Error())"
+ch	Reject	"ch.Reject(UnknownChannelType, fmt.Sprintf(\"unknown channel type: %v\", ch.ChannelType()))"
+ch	sendMessage	"ch.sendMessage(channelCloseMsg{
+	PeersID: ch.remoteId})"
+ch	sendMessage	ch.sendMessage(channelCloseMsg{PeersID: ch.remoteId})
+ch	sendMessage	ch.sendMessage(msg)
+ch	sendMessage	ch.sendMessage(reject)
+ch	sendMessage	"ch.sendMessage(channelEOFMsg{
+	PeersID: ch.remoteId})"
+chaincodeLogger	Errorf	"chaincodeLogger.Errorf(\"%+v\", err1)"
+chaincodeLogger	Errorf	"chaincodeLogger.Errorf(\"[%s]Incorrect chaincode message %s received. Expecting %s or %s\", shorttxid(responseMsg.Txid), responseMsg.Type, pb.ChaincodeMessage_RESPONSE, pb.ChaincodeMessage_ERROR)"
+chaincodeLogger	Errorf	"chaincodeLogger.Errorf(\"[%s] Another state request pending for this Txid. Cannot process.\", shorttxid(txid))"
+chaincodeLogger	Errorf	"chaincodeLogger.Errorf(\"[%s] Received %s. Payload: %s\", shorttxid(responseMsg.Txid), pb.ChaincodeMessage_ERROR, responseMsg.Payload)"
+chaincodeLogger	Errorf	"chaincodeLogger.Errorf(\"[%s]Received %s. Payload: %s\", shorttxid(responseMsg.Txid), pb.ChaincodeMessage_ERROR, responseMsg.Payload)"
+chaincodeLogger	Errorf	chaincodeLogger.Errorf(errFmt, args...)
+chaincodeLogger	Debugf	"chaincodeLogger.Debugf(\"[%s] send state message %s\", shorttxid(msg.Txid), msg.Type)"
+chaincodeLogger	Debugf	"chaincodeLogger.Debugf(\"in proc %v\", args)"
+chaincodeLogger	Debugf	"chaincodeLogger.Debugf(\"[%s] before send\", shorttxid(msg.Txid))"
+chaincodeLogger	Debugf	"chaincodeLogger.Debugf(\"[%s] Handling ChaincodeMessage of type: %s(state:%s)\", shorttxid(msg.Txid), msg.Type, handler.state)"
+chaincodeLogger	Debugf	"chaincodeLogger.Debugf(\"%+v\", err)"
+chaincodeLogger	Debugf	"chaincodeLogger.Debugf(\"[%s] Init get response status: %d\", shorttxid(msg.Txid), res.Status)"
+chaincodeLogger	Warningf	"chaincodeLogger.Warningf(\"Invalid logging level in '%s' ignored\", field)"
+chaincodeLogger	Warningf	"chaincodeLogger.Warningf(\"Error: %s for shim log level: %s\", err, shimLogLevelString)"
+chaincodeLogger	Warningf	"chaincodeLogger.Warningf(\"Invalid logging override '%s' ignored - missing ':'?\", field)"
+chaincodeLogger	Warningf	"chaincodeLogger.Warningf(\"Invalid logging override specification '%s' ignored - no module specified\", field)"
+chaincodeLogger	Warningf	"chaincodeLogger.Warningf(\"Logging level '%s' not recognized, defaulting to '%s': %s\", field, defaultLevel, err)"
+chaincodeLogger	Warningf	"chaincodeLogger.Warningf(\"Error: '%s' for chaincode log level: %s; defaulting to %s\", err, chaincodeLogLevelString, defaultLevel.String())"
+child	cancel	child.cancel(false, p.err)
+child	cancel	child.cancel(false, err)
+child	cancel	child.cancel(false, parent.Err())
+ci	setBad	ci.setBad()
+ci	Unlock	ci.Unlock()
+ci	Lock	ci.Lock()
+ci	setError	ci.setError(err)
+ci	setError	"ci.setError(fmt.Errorf(\"unknown response during CopyIn: %q\", t))"
+client	Closed	client.Closed()
+client	deregisterBroker	client.deregisterBroker(broker)
+cloned	Close	cloned.Close()
+cluster	Unlock	cluster.Unlock()
+cluster	Lock	cluster.Lock()
+cluster	RUnlock	cluster.RUnlock()
+cluster	RLock	cluster.RLock()
+cluster	syncServers	cluster.syncServers()
+cluster	removeServer	cluster.removeServer(server)
+cluster	removeServer	cluster.removeServer(pending.server)
+cluster	addServer	cluster.addServer(pending.server, pending.info, completeSync)
+cluster	addServer	cluster.addServer(pending.server, pending.info, partialSync)
+cluster	addServer	cluster.addServer(server, info, completeSync)
+cmd	setErr	cmd.setErr(e)
+cmd	setErr	cmd.setErr(err)
+cmd	Err	cmd.Err()
+cmd	Val	cmd.Val()
+cmd	setReadTimeout	cmd.setReadTimeout(timeout)
+cmd	setReadTimeout	cmd.setReadTimeout(a.Block)
+cn	send	cn.send(w)
+cn	send	cn.send(b)
+cn	errRecover	cn.errRecover(&err)
+cn	processReadyForQuery	cn.processReadyForQuery(r)
+cn	readReadyForQuery	cn.readReadyForQuery()
+cn	checkIsInTransaction	cn.checkIsInTransaction(true)
+cn	checkIsInTransaction	cn.checkIsInTransaction(false)
+cn	isInTransaction	cn.isInTransaction()
+cn	readBindResponse	cn.readBindResponse()
+cn	readParseResponse	cn.readParseResponse()
+cn	postExecuteWorkaround	cn.postExecuteWorkaround()
+conn	Close	conn.Close()
+context	Background	context.Background()
+curve	Params	curve.Params()
+d	unmarshal	d.unmarshal(n, reflect.ValueOf(v))
+d	unmarshal	d.unmarshal(n.children[i], k)
+d	unmarshal	d.unmarshal(n.children[i+1], field)
+d	unmarshal	d.unmarshal(n.children[i+1], value)
+d	unmarshal	d.unmarshal(n.children[i+1], v)
+d	unmarshal	d.unmarshal(node, v)
+d	Kind	d.Kind()
+d	IsNil	d.IsNil()
+d	terror	d.terror(n, tag, out)
+d	terror	d.terror(n, yaml_SEQ_TAG, out)
+d	terror	d.terror(n, yaml_MAP_TAG, out)
+d	SetUint	d.SetUint(x)
+d	SetUint	d.SetUint(0)
+d	SetInt	d.SetInt(x)
+d	SetInt	d.SetInt(0)
+d	SetInt	d.SetInt(s)
+d	merge	d.merge(n.children[i+1], out)
+d	Set	d.Set(reflect.New(t))
+d	Set	d.Set(reflect.New(d.Type().Elem()))
+d	Set	d.Set(reflect.MakeSlice(d.Type(), n, n))
+dataValue	Interface	dataValue.Interface()
+dataValue	Kind	dataValue.Kind()
+db	NewScope	db.NewScope(nil)
+db	NewScope	db.NewScope(source)
+db	NewScope	"db.NewScope(\"\")"
+dec	UseNumber	dec.UseNumber()
+driver	RowsAffected	driver.RowsAffected(0)
+driver	RowsAffected	driver.RowsAffected(n)
+dv	Kind	dv.Kind()
+e	marshal	"e.marshal(\"\", in.MapIndex(k))"
+e	marshal	"e.marshal(\"\", reflect.ValueOf(item.Key))"
+e	marshal	"e.marshal(\"\", value)"
+e	marshal	e.marshal(tag, in.Elem())
+e	marshal	"e.marshal(\"\", m.MapIndex(k))"
+e	marshal	"e.marshal(\"\", in.Index(i))"
+e	must	e.must(yaml_emitter_initialize(&e.emitter))
+e	must	e.must(yaml_document_start_event_initialize(&e.event, nil, nil, true))
+e	must	e.must(false)
+e	must	e.must(yaml_sequence_start_event_initialize(&e.event, nil, []byte(tag), implicit, style))
+e	must	e.must(yaml_mapping_end_event_initialize(&e.event))
+e	must	e.must(yaml_sequence_end_event_initialize(&e.event))
+e	emit	e.emit()
+e	emitScalar	"e.emitScalar(s, \"\", tag, style)"
+e	emitScalar	"e.emitScalar(s, \"\", tag, yaml_PLAIN_SCALAR_STYLE)"
+e	emitScalar	"e.emitScalar(\"null\", \"\", \"\", yaml_PLAIN_SCALAR_STYLE)"
+e	nilv	e.nilv()
+e	mappingv	"e.mappingv(tag, func() {
+	for _, info := range sinfo.FieldsList {
+		var value reflect.Value
+		if info.Inline == nil {
+			value = in.Field(info.Num)
+		} else {
+			value = in.FieldByIndex(info.Inline)
+		}
+		if info.OmitEmpty && isZero(value) {
+			continue
+		}
+		e.marshal(\"\", reflect.ValueOf(info.Key))
+		e.flow = info.Flow
+		e.marshal(\"\", value)
+	}
+	if sinfo.InlineMap >= 0 {
+		m := in.Field(sinfo.InlineMap)
+		if m.Len() > 0 {
+			e.flow = false
+			keys := keyList(m.MapKeys())
+			sort.Sort(keys)
+			for _, k := range keys {
+				if _, found := sinfo.FieldsMap[k.String()]; found {
+					panic(fmt.Sprintf(\"Can't have key %q in inlined map; conflicts with struct field\", k.String()))
+				}
+				e.marshal(\"\", k)
+				e.flow = false
+				e.marshal(\"\", m.MapIndex(k))
+			}
+		}
+	}
+})"
+e	mappingv	"e.mappingv(tag, func() {
+	keys := keyList(in.MapKeys())
+	sort.Sort(keys)
+	for _, k := range keys {
+		e.marshal(\"\", k)
+		e.marshal(\"\", in.MapIndex(k))
+	}
+})"
+e	mappingv	"e.mappingv(tag, func() {
+	slice := in.Convert(reflect.TypeOf([]MapItem{})).Interface().([]MapItem)
+	for _, item := range slice {
+		e.marshal(\"\", reflect.ValueOf(item.Key))
+		e.marshal(\"\", reflect.ValueOf(item.Value))
+	}
+})"
+elemType	Kind	elemType.Kind()
+enc	Encode	enc.Encode(errorResponse{Error: errmess})
+enc	Encode	enc.Encode(req)
+enc	Encode	"enc.Encode(errorResponse{
+	Error: \"Only GET and PUT are supported.\",
+})"
+enc	Encode	enc.Encode(payload{Level: &current})
+entry	log	entry.log(TraceLevel, fmt.Sprint(args...))
+entry	log	entry.log(DebugLevel, fmt.Sprint(args...))
+entry	log	entry.log(WarnLevel, fmt.Sprint(args...))
+entry	log	entry.log(ErrorLevel, fmt.Sprint(args...))
+entry	log	entry.log(PanicLevel, fmt.Sprint(args...))
+entry	log	entry.log(InfoLevel, fmt.Sprint(args...))
+entry	Warn	entry.Warn(args...)
+entry	Warn	entry.Warn(entry.sprintlnn(args...))
+entry	Warn	entry.Warn(fmt.Sprintf(format, args...))
+entry	Info	entry.Info(entry.sprintlnn(args...))
+entry	Info	entry.Info(args...)
+entry	Info	entry.Info(fmt.Sprintf(format, args...))
+entry	Panic	entry.Panic(fmt.Sprintf(format, args...))
+entry	Panic	entry.Panic(args...)
+entry	Panic	entry.Panic(entry.sprintlnn(args...))
+entry	Warnf	entry.Warnf(format, args...)
+entry	Debug	entry.Debug(fmt.Sprintf(format, args...))
+entry	Debug	entry.Debug(args...)
+entry	Debug	entry.Debug(entry.sprintlnn(args...))
+entry	Trace	entry.Trace(args...)
+entry	Trace	entry.Trace(entry.sprintlnn(args...))
+entry	Trace	entry.Trace(fmt.Sprintf(format, args...))
+entry	Error	entry.Error(args...)
+entry	Error	entry.Error(fmt.Sprintf(format, args...))
+entry	Error	entry.Error(entry.sprintlnn(args...))
+entry	Warnln	entry.Warnln(args...)
+entry	Fatal	entry.Fatal(entry.sprintlnn(args...))
+entry	Fatal	entry.Fatal(args...)
+entry	Fatal	entry.Fatal(fmt.Sprintf(format, args...))
+err	Error	err.Error()
+errors	New	"errors.New(\"context canceled\")"
+errors	New	"errors.New(\"proxy: port number out of range: \" + portStr)"
+errors	New	"errors.New(\"proxy: destination host name too long: \" + host)"
+errors	New	"errors.New(\"redis: cluster has no state\")"
+errors	New	"errors.New(\"pq: Listener has been closed\")"
+errors	New	"errors.New(\"ssh: requested service '\" + serviceRequest.Service + \"' before authenticating\")"
+errors	Errorf	"errors.Errorf(\"incorrect chaincode message %s received. Expecting %s or %s\", responseMsg.Type, pb.ChaincodeMessage_RESPONSE, pb.ChaincodeMessage_ERROR)"
+errors	Errorf	"errors.Errorf(\"[%s] error sending %s\", shorttxid(msg.Txid), pb.ChaincodeMessage_QUERY_STATE_NEXT)"
+errors	Errorf	"errors.Errorf(\"[%s] error sending DEL_STATE %s\", shorttxid(msg.Txid), pb.ChaincodeMessage_DEL_STATE)"
+errors	Errorf	"errors.Errorf(\"[%s] error sending %s\", shorttxid(msg.Txid), pb.ChaincodeMessage_QUERY_STATE_CLOSE)"
+errors	Errorf	"errors.Errorf(\"[%s] cannot create response channel\", shorttxid(txid))"
+errors	Errorf	"errors.Errorf(\"[%s] error sending %s\", shorttxid(msg.Txid), pb.ChaincodeMessage_GET_HISTORY_FOR_KEY)"
+errors	WithMessage	"errors.WithMessage(err, fmt.Sprintf(\"[%s] error sending PUT_STATE\", msg.Txid))"
+errors	WithMessage	"errors.WithMessage(err, fmt.Sprintf(\"[%s]error sending PUT_STATE_METADATA\", msg.Txid))"
+errors	WithMessage	"errors.WithMessage(err, fmt.Sprintf(\"[%s]error sending GET_STATE_METADATA\", shorttxid(txID)))"
+errors	WithMessage	"errors.WithMessage(err, \"failed extracting signedProposal fields\")"
+errors	WithMessage	"errors.WithMessage(err, \"failed computing binding from signedProposal\")"
+errors	WithMessage	"errors.WithMessage(err, \"error sending chaincode REGISTER\")"
+field	Set	field.Set(reflect.ValueOf(data))
+field	Set	field.Set(reflect.Append(field.Field, reflectValue))
+field	Set	field.Set(value)
+field	Set	field.Set(reflect.ValueOf(nl))
+field	Set	field.Set(reflect.Append(fieldsSourceMap[source][i], link...))
+field	Set	field.Set(reflect.ValueOf(n))
+field	TagSettingsSet	"field.TagSettingsSet(\"AUTO_INCREMENT\", \"AUTO_INCREMENT\")"
+field	TagSettingsSet	field.TagSettingsSet(key, value)
+field	Type	field.Type()
+field	SetUint	field.SetUint(uint64(data[0]))
+field	SetUint	field.SetUint(uint64(u32))
+field	SetUint	field.SetUint(u64)
+fieldType	Kind	fieldType.Kind()
+fieldValue	Set	fieldValue.Set(reflect.New(field.Struct.Type.Elem()))
+fieldValue	Set	fieldValue.Set(reflect.New(fieldValue.Type().Elem()))
+fieldValue	Set	fieldValue.Set(reflectValue.Convert(fieldValue.Type()))
+fieldValue	Kind	fieldValue.Kind()
+file	assertMode	file.assertMode(gfsWriting)
+file	assertMode	file.assertMode(gfsReading)
+file	insertChunk	file.insertChunk(data[:size])
+file	insertChunk	file.insertChunk(file.wbuf)
+fmt	Errorf	"fmt.Errorf(\"invalid redis database number: %q\", f[0])"
+fmt	Errorf	"fmt.Errorf(\"unexpected CommandComplete\")"
+fmt	Errorf	"fmt.Errorf(\"redigo: unexpected element type for Ints, got type %T\", v)"
+fmt	Errorf	"fmt.Errorf(\"not a valid logrus Level: %q\", lvl)"
+fmt	Errorf	"fmt.Errorf(\"label value %q is not valid UTF-8\", val)"
+fmt	Errorf	"fmt.Errorf(\"redis: unsupported pubsub message: %q\", kind)"
+fmt	Sprintf	"fmt.Sprintf(name+\"-for-broker-%d\", broker.ID())"
+fmt	Sprintf	"fmt.Sprintf(\"invalid request size (%d)\", prepEnc.length)"
+fmt	Sprintf	"fmt.Sprintf(\"unsupported compression codec (%d)\", b.Codec)"
+fmt	Sprintf	"fmt.Sprintf(\"(%v.%v %s %v)\", quotedTableName, quotedPrimaryKey, equalSQL, value.Int64)"
+fmt	Sprintf	"fmt.Sprintf(\"(%v.%v %s %v)\", quotedTableName, quotedPrimaryKey, equalSQL, value)"
+fmt	Sprintf	"fmt.Sprintf(\"Request body must be well-formed JSON: %v\", err)"
+fmt	Fprintf	"fmt.Fprintf(&buf, \"%sClose() -> (%v)\", c.prefix, err)"
+fmt	Fprintf	"fmt.Fprintf(&buffer, \"Error #%02d: %s\\n\", i+1, msg.Err)"
+fmt	Fprintf	"fmt.Fprintf(st, \"\\n%+v\", f)"
+fmt	Fprintf	"fmt.Fprintf(log.errorOutput, \"%v Logger.check error: failed to get caller\\n\", time.Now().UTC())"
+fmt	Fprintf	"fmt.Fprintf(s, \"%d\", f.line())"
+fmt	Fprintf	"fmt.Fprintf(buf, \"%q\", v)"
+fmt	Fprint	fmt.Fprint(buf, v)
+fmt	Fprint	fmt.Fprint(&buf, arg)
+globalLogger	Output	globalLogger.Output(2, fmt.Sprintln(v...))
+globalLogger	Output	globalLogger.Output(2, fmt.Sprintf(format, v...))
+globalLogger	Output	globalLogger.Output(2, fmt.Sprint(v...))
+globalMutex	Unlock	globalMutex.Unlock()
+globalMutex	Lock	globalMutex.Lock()
+group	handle	"group.handle(\"DELETE\", relativePath, handlers)"
+group	handle	"group.handle(\"POST\", relativePath, handlers)"
+group	handle	"group.handle(\"PUT\", relativePath, handlers)"
+group	handle	"group.handle(\"PATCH\", relativePath, handlers)"
+group	handle	"group.handle(\"HEAD\", relativePath, handlers)"
+group	handle	"group.handle(\"OPTIONS\", relativePath, handlers)"
+group	returnObj	group.returnObj()
+h	Helper	h.Helper()
+h	Write	h.Write(r.H)
+h	Write	h.Write(tag)
+h	Write	h.Write(r.SessionID)
+h	Write	h.Write(r.K)
+h	Write	h.Write(data)
+h	Write	h.Write(K)
+h	Sum	h.Sum(nil)
+handler	createResponse	handler.createResponse(ERROR, responseMsg.Payload)
+handler	createResponse	handler.createResponse(ERROR, []byte(errStr))
+handler	createResponse	"handler.createResponse(ERROR, []byte(fmt.Sprintf(\"[%s] Incorrect chaincode message %s received. Expecting %s or %s\", shorttxid(responseMsg.Txid), responseMsg.Type, pb.ChaincodeMessage_RESPONSE, pb.ChaincodeMessage_ERROR)))"
+handler	createResponse	handler.createResponse(ERROR, []byte(err.Error()))
+handler	deleteChannel	handler.deleteChannel(channelId, txid)
+handler	deleteChannel	handler.deleteChannel(channelID, txid)
+handler	Lock	handler.Lock()
+handler	Unlock	handler.Unlock()
+handler	serialSendAsync	handler.serialSendAsync(msg, nil)
+handler	serialSendAsync	handler.serialSendAsync(msg, errc)
+hasher	Write	hasher.Write([]byte(signingString))
+header	Set	header.Set(contentTypeHeader, string(contentType))
+header	Set	header.Set(contentLengthHeader, fmt.Sprint(buf.Len()))
+header	Set	header.Set(contentEncodingHeader, encoding)
+hex	Encode	hex.Encode(dst[0:], src[0:4])
+hex	Encode	hex.Encode(dst[14:], src[6:8])
+hex	Encode	hex.Encode(dst[24:], src[10:16])
+hex	Encode	hex.Encode(dst[19:], src[8:10])
+hex	Encode	hex.Encode(dst[9:], src[4:6])
+hex	Encode	hex.Encode(result[2:], v)
+hex	EncodeToString	hex.EncodeToString(psum.Sum(nil))
+hex	EncodeToString	hex.EncodeToString(h.Sum(nil))
+hmac	New	hmac.New(sha256.New, key)
+hmac	New	hmac.New(sha1.New, key)
+http	Error	"http.Error(w, \"No metrics encoded, last error:\\n\\n\"+lastErr.Error(), http.StatusInternalServerError)"
+http	Error	"http.Error(w, \"An error has occurred during metrics collection:\\n\\n\"+err.Error(), http.StatusInternalServerError)"
+http	Error	"http.Error(w, \"An error has occurred during metrics encoding:\\n\\n\"+err.Error(), http.StatusInternalServerError)"
+http	Error	http.Error(w, http.StatusText(status), status)
+indirectScopeValue	Kind	indirectScopeValue.Kind()
+indirectScopeValue	Len	indirectScopeValue.Len()
+indirectType	Kind	indirectType.Kind()
+internal	Logf	"internal.Logf(
+	\"specified duration is %s, but minimal supported value is %s\",
+	dur, time.Second,
+)"
+internal	Logf	"internal.Logf(\"sentinel: GetMasterAddrByName name=%q failed: %s\",
+	c.masterName, err)"
+internal	Logf	"internal.Logf(\"info for cmd=%s not found\", name)"
+internal	Logf	"internal.Logf(\"sentinel: Sentinels master=%q failed: %s\", c.masterName, err)"
+internal	Logf	"internal.Logf(\"redis: unknown message: %T\", msg)"
+internal	Logf	"internal.Logf(\"sentinel: discovered new sentinel=%q for master=%q\",
+	sentinelAddr, c.masterName)"
+internal	IsRetryableError	internal.IsRetryableError(err, true)
+internal	IsRetryableError	internal.IsRetryableError(err, cmd.readTimeout() == nil)
+internal	IsRedisError	internal.IsRedisError(err)
+internal	RetryBackoff	internal.RetryBackoff(attempt, c.opt.MinRetryBackoff, c.opt.MaxRetryBackoff)
+io	WriteString	io.WriteString(h, src)
+io	WriteString	io.WriteString(s, funcname(name))
+io	WriteString	"io.WriteString(s, \":\")"
+io	WriteString	io.WriteString(s, w.msg)
+io	WriteString	io.WriteString(h, strconv.FormatInt(time.Now().UnixNano(), 10))
+io	WriteString	io.WriteString(s, w.Error())
+iter	Next	iter.Next(&spec)
+iter	Next	iter.Next(elemp.Interface())
+iter	Next	iter.Next(result)
+iter	Next	iter.Next(&coll)
+iter	Next	iter.Next(slicev.Index(i).Addr().Interface())
+iter	Next	iter.Next(&doc)
+iter	Close	iter.Close()
+json	Marshal	json.Marshal(a.JSON())
+json	Marshal	json.Marshal(msg.JSON())
+json	Marshal	json.Marshal(&j.data)
+k	Type	k.Type()
+l	setState	l.setState(connStateIdle)
+l	setState	l.setState(connStateExpectReadyForQuery)
+l	setState	l.setState(connStateExpectResponse)
+l	emitEvent	l.emitEvent(ListenerEventConnectionAttemptFailed, err)
+l	emitEvent	l.emitEvent(ListenerEventConnected, nil)
+l	emitEvent	l.emitEvent(ListenerEventDisconnected, err)
+l	emitEvent	l.emitEvent(ListenerEventReconnected, nil)
+l	Unlock	l.Unlock()
+l	Lock	l.Lock()
+l	ExecSimpleQuery	"l.ExecSimpleQuery(\"UNLISTEN \" + QuoteIdentifier(channel))"
+l	ExecSimpleQuery	"l.ExecSimpleQuery(\"UNLISTEN *\")"
+l	ExecSimpleQuery	"l.ExecSimpleQuery(\"LISTEN \" + QuoteIdentifier(channel))"
+log	Printf	"log.Printf(\"send(%d): %#v\", ch.mux.chanList.offset, msg)"
+log	Printf	"log.Printf(\"[warning] duplicated callback `%v` from %v\\n\", cp.name, fileWithLineNum())"
+log	Printf	"log.Printf(\"decoding(%d): %d %#v - %d bytes\", m.chanList.offset, packet[0], p, len(packet))"
+log	Printf	"log.Printf(\"%s %s %T %v (%v)\", t.id(), action, msg, msg, err)"
+log	Printf	"log.Printf(\"[info] removing callback `%v` from %v\\n\", callbackName, fileWithLineNum())"
+log	Printf	log.Printf(format, args...)
+log	Panicf	"log.Panicf(\"MustStringArray() received too many arguments %d\", len(args))"
+log	Panicf	"log.Panicf(\"MustArray() received too many arguments %d\", len(args))"
+log	Panicf	"log.Panicf(\"MustInt() received too many arguments %d\", len(args))"
+log	Panicf	"log.Panicf(\"MustInt64() received too many arguments %d\", len(args))"
+log	Panicf	"log.Panicf(\"MustString() received too many arguments %d\", len(args))"
+log	Panicf	"log.Panicf(\"MustFloat64() received too many arguments %d\", len(args))"
+log	New	"log.New(os.Stdout, \"\", log.LstdFlags)"
+log	New	"log.New(&loggerWriter{logFunc}, \"\", 0)"
+log	New	"log.New(os.Stdout, \"\\r\\n\", 0)"
+log	New	"log.New(&loggerWriter{f}, \"\", 0)"
+log	New	"log.New(ioutil.Discard, \"[Sarama] \", log.LstdFlags)"
+log	Println	"log.Println(`BindWith(\\\"interface{}, binding.Binding\\\") error is going to
+	be deprecated, please check issue #662 and either use MustBindWith() if you
+	want HTTP 400 to be automatically returned if any error occur, or use
+	ShouldBindWith() if you need to manage the error.`)"
+log	Println	log.Println(what, who, p[0])
+log	Println	"log.Println(\"loop exit\", err)"
+logger	releaseEntry	logger.releaseEntry(entry)
+logger	IsLevelEnabled	logger.IsLevelEnabled(WarnLevel)
+logger	IsLevelEnabled	logger.IsLevelEnabled(FatalLevel)
+logger	IsLevelEnabled	logger.IsLevelEnabled(TraceLevel)
+logger	IsLevelEnabled	logger.IsLevelEnabled(ErrorLevel)
+logger	IsLevelEnabled	logger.IsLevelEnabled(DebugLevel)
+logger	IsLevelEnabled	logger.IsLevelEnabled(PanicLevel)
+logger	Exit	logger.Exit(1)
+logging	SetLevel	"logging.SetLevel(logging.Level(level), \"shim\")"
+logging	SetLevel	logging.SetLevel(logging.Level(level), c.logger.Module)
+logging	SetLevel	"logging.SetLevel(levelAll, \"\")"
+logging	SetLevel	logging.SetLevel(levelSingle, module)
+logging	MustGetLogger	"logging.MustGetLogger(\"mock\")"
+logging	MustGetLogger	"logging.MustGetLogger(\"shim\")"
+logging	MustGetLogger	logging.MustGetLogger(name)
+m	Unlock	m.Unlock()
+m	sendMessage	m.sendMessage(globalRequestFailureMsg{Data: data})
+m	sendMessage	m.sendMessage(failMsg)
+m	sendMessage	m.sendMessage(globalRequestSuccessMsg{Data: data})
+magics	write	magics.write(h)
+math	Inf	math.Inf(-1)
+math	Inf	math.Inf(+1)
+metricFamily	GetType	metricFamily.GetType()
+mockLogger	Debug	"mockLogger.Debug(\"MockStub\", stub.Name, \"Getting\", key, value)"
+mockLogger	Debug	"mockLogger.Debug(\"EndKey\", iter.EndKey)"
+mockLogger	Debug	"mockLogger.Debug(\"MockStub\", stub.Name, \"Key\", key, \"already in State\")"
+mockLogger	Debug	"mockLogger.Debug(\"MockStub\", stub.Name, \"Key\", key, \" inserted before\", elem.Value)"
+mockLogger	Debug	"mockLogger.Debug(\"HasNext() got next\")"
+mockLogger	Debug	"mockLogger.Debug(\"MockStub\", stub.Name, \"Deleting\", key, stub.State[key])"
+mockLogger	Errorf	"mockLogger.Errorf(\"%+v\", err)"
+msg	byteSize	msg.byteSize(version)
+mutex	Lock	mutex.Lock()
+n	Sign	n.Sign()
+net	JoinHostPort	net.JoinHostPort(originHost, nodePort)
+net	JoinHostPort	net.JoinHostPort(addr[0], addr[1])
+net	JoinHostPort	"net.JoinHostPort(host, o[\"port\"])"
+netConn	Close	netConn.Close()
+newScope	PrimaryKeyZero	newScope.PrimaryKeyZero()
+om	releaseCoordinator	om.releaseCoordinator(broker)
+om	fetchInitialOffset	om.fetchInitialOffset(topic, partition, retries-1)
+om	releasePOMs	om.releasePOMs(true)
+om	releasePOMs	om.releasePOMs(false)
+opt	init	opt.init()
+os	IsNotExist	os.IsNotExist(err)
+out	Set	out.Set(reflect.MakeSlice(out.Type(), l, l))
+out	Set	out.Set(out.Slice(0, j))
+out	Set	out.Set(reflect.ValueOf(resolved))
+out	Set	out.Set(slicev)
+out	Set	out.Set(reflect.MakeMap(outt))
+out	Set	out.Set(reflect.Zero(out.Type()))
+out	SetInt	out.SetInt(int64(d))
+out	SetInt	out.SetInt(resolved)
+out	SetInt	out.SetInt(int64(resolved))
+out	Kind	out.Kind()
+out	OverflowUint	out.OverflowUint(uint64(resolved))
+out	SetUint	out.SetUint(uint64(resolved))
+out	SetFloat	out.SetFloat(resolved)
+out	SetFloat	out.SetFloat(float64(resolved))
+out	OverflowInt	out.OverflowInt(resolved)
+out	OverflowInt	out.OverflowInt(int64(resolved))
+out	CanAddr	out.CanAddr()
+p	skip	p.skip()
+p	returnError	"p.returnError(msg, ConfigurationError(\"Producing headers requires Kafka at least v0.11\"))"
+p	returnError	p.returnError(msg, ErrMessageSizeTooLarge)
+p	returnError	p.returnError(msg, kerr)
+p	returnError	p.returnError(msg, err)
+p	expect	p.expect(str, ':', minSep)
+p	expect	p.expect(str, '-', daySep)
+p	expect	p.expect(str, ':', secSep)
+p	expect	p.expect(str, ' ', timeSep)
+p	anchor	p.anchor(n, p.event.anchor)
+pe	putInt32	pe.putInt32(r.ThrottleTime)
+pe	putInt32	pe.putInt32(int32(d.Timeout / time.Millisecond))
+pe	putInt32	pe.putInt32(int32(f.ThrottleTime / time.Millisecond))
+pe	putInt32	pe.putInt32(b.FirstSequence)
+pe	putInt32	pe.putInt32(r.GenerationId)
+pe	putInt32	pe.putInt32(pm.Leader)
+pe	putInt16	pe.putInt16(b.computeAttributes())
+pe	putInt16	pe.putInt16(i.ProducerEpoch)
+pe	putInt16	pe.putInt16(ct.Resources[i].ErrorCode)
+pe	putInt16	pe.putInt16(a.ProducerEpoch)
+pe	putInt16	pe.putInt16(int16(tm.Err))
+pe	putInt16	pe.putInt16(int16(f.Err))
+pe	putInt64	pe.putInt64(t.FirstOffset)
+pe	putInt64	pe.putInt64(msb.Offset)
+pe	putInt64	pe.putInt64(i.ProducerID)
+pe	putInt64	pe.putInt64(a.ProducerID)
+pe	putInt64	pe.putInt64(t.ProducerID)
+pe	putInt64	pe.putInt64(b.Offset)
+pe	putInt8	pe.putInt8(int8(a.Operation))
+pe	putInt8	pe.putInt8(int8(ct.Resources[i].Type))
+pe	putInt8	pe.putInt8(int8(a.PermissionType))
+pe	putInt8	pe.putInt8(attributes)
+pe	putInt8	pe.putInt8(int8(r.ResourceType))
+pe	putInt8	pe.putInt8(b.Version)
+pe	push	pe.push(newCRC32Field(crcCastagnoli))
+pe	push	pe.push(newCRC32Field(crcIEEE))
+pe	push	pe.push(&lengthField{})
+pe	pop	pe.pop()
+pe	putBool	pe.putBool(acr.ValidateOnly)
+pe	putBool	pe.putBool(c.ValidateOnly)
+pe	putBool	pe.putBool(tm.IsInternal)
+pom	handleError	pom.handleError(err)
+pom	handleError	pom.handleError(ErrIncompleteResponse)
+proto	Float64	proto.Float64(v)
+proto	Float64	proto.Float64(q)
+proto	Float64	proto.Float64(upperBound)
+proto	Float64	proto.Float64(rank)
+proto	String	proto.String(n)
+proto	String	proto.String(labelValues[i])
+proto	String	proto.String(v)
+proto	String	proto.String(l)
+psum	Write	"psum.Write([]byte(user.Username + \":mongo:\" + user.Password))"
+psum	Write	"psum.Write([]byte(cred.Username + \":mongo:\" + cred.Password))"
+psum	Write	"psum.Write([]byte(username + \":mongo:\" + password))"
+pubsub	init	pubsub.init()
+r	next	r.next(6)
+r	next	r.next(2)
+reflect	TypeOf	reflect.TypeOf(actual)
+reflect	TypeOf	reflect.TypeOf((*big.Int)(nil))
+reflect	TypeOf	reflect.TypeOf(map[interface{}]interface{}{})
+reflect	TypeOf	reflect.TypeOf(int32(0))
+reflect	TypeOf	reflect.TypeOf(time.Time{})
+reflect	TypeOf	"reflect.TypeOf(\"\")"
+reflect	DeepEqual	reflect.DeepEqual(object, zero.Interface())
+reflect	DeepEqual	reflect.DeepEqual(value.Interface(), reflect.Zero(value.Type()).Interface())
+reflect	DeepEqual	reflect.DeepEqual(i, reflect.Zero(reflect.TypeOf(i)).Interface())
+reflect	DeepEqual	reflect.DeepEqual(expected, actual)
+reflect	DeepEqual	reflect.DeepEqual(expectedValue.Convert(actualType).Interface(), actual)
+reflectType	Kind	reflectType.Kind()
+reflectValue	Kind	reflectValue.Kind()
+regexp	MustCompile	"regexp.MustCompile(\"(?i)^count(.+)$\")"
+regexp	MustCompile	regexp.MustCompile(`jinzhu/gorm(@.*)?/.*.go`)
+regexp	MustCompile	regexp.MustCompile(`^[-+]?[0-9][0-9_]*(?::[0-5]?[0-9])+(?:\.[0-9_]*)?$`)
+regexp	MustCompile	"regexp.MustCompile(\"^\\\\s*\\\\d+\\\\s*$\")"
+regexp	MustCompile	"regexp.MustCompile(\"(?i) (=|<>|(>|<)(=?)|LIKE|IS|IN) \")"
+regexp	MustCompile	regexp.MustCompile(`\?`)
+result	init	result.init(result)
+results	Set	results.Set(reflect.Append(results, elem))
+results	Set	results.Set(reflect.MakeSlice(results.Type(), 0, 0))
+results	Set	results.Set(reflect.Append(results, elem.Addr()))
+resultsValue	Len	resultsValue.Len()
+rows	Close	rows.Close()
+rows	Next	rows.Next()
+s	log	s.log(DPanicLevel, template, args, nil)
+s	log	s.log(FatalLevel, template, args, nil)
+s	log	s.log(PanicLevel, template, args, nil)
+s	log	s.log(DPanicLevel, msg, nil, keysAndValues)
+s	log	"s.log(WarnLevel, \"\", args, nil)"
+s	log	s.log(WarnLevel, template, args, nil)
+s	fieldCanAutoIncrement	s.fieldCanAutoIncrement(field)
+s	Flag	s.Flag('+')
+s	Flag	s.Flag('#')
+s	AddError	s.AddError(db.Commit())
+s	AddError	s.AddError(db.Rollback())
+s	AddError	s.AddError(ErrInvalidTransaction)
+s	AddError	s.AddError(scope.db.Error)
+s	XORKeyStream	s.XORKeyStream(plain, plain)
+s	XORKeyStream	s.XORKeyStream(c.buf[4:], c.buf[4:packetEnd])
+s	XORKeyStream	s.XORKeyStream(polyKey[:], polyKey[:])
+s	print	s.print(fileWithLineNum(), err)
+s	print	"s.print(\"sql\", fileWithLineNum(), NowFunc().Sub(t), sql, vars, s.RowsAffected)"
+s	print	"s.print(append([]interface{}{\"log\", fileWithLineNum()}, v...)...)"
+s	unsetSocket	s.unsetSocket()
+s	Run	"s.Run(\"ping\", nil)"
+s	Run	"s.Run(bson.D{{\"fsync\", 1}, {\"lock\", true}}, nil)"
+s	Run	"s.Run(bson.D{{\"fsync\", 1}, {\"async\", async}}, nil)"
+s	updateConditionMap	s.updateConditionMap(conditionMap, db, []JoinTableSource{s.Destination}, destination)
+s	updateConditionMap	s.updateConditionMap(conditionMap, db, []JoinTableSource{s.Source, s.Destination}, sources...)
+s	updateConditionMap	s.updateConditionMap(conditionMap, db, []JoinTableSource{s.Source}, source)
+scanner	Scan	scanner.Scan()
+scanner	RedisScan	scanner.RedisScan(s)
+scope	Err	"scope.Err(fmt.Errorf(\"can't preload field %s for %s\", preloadField, currentScope.GetModelStruct().ModelType))"
+scope	Err	scope.Err(ErrRecordNotFound)
+scope	Err	scope.Err(field.Set(result))
+scope	Err	scope.Err(rows.Scan(elem))
+scope	Err	"scope.Err(fmt.Errorf(\"invalid association %v\", foreignKeys))"
+scope	Err	scope.Err(newScope.SetColumn(relationship.PolymorphicType, relationship.PolymorphicValue))
+scope	HasError	scope.HasError()
+scope	CallMethod	"scope.CallMethod(\"AfterCreate\")"
+scope	CallMethod	"scope.CallMethod(\"AfterSave\")"
+scope	CallMethod	"scope.CallMethod(\"AfterDelete\")"
+scope	CallMethod	"scope.CallMethod(\"BeforeCreate\")"
+scope	CallMethod	"scope.CallMethod(\"BeforeSave\")"
+scope	CallMethod	"scope.CallMethod(\"BeforeUpdate\")"
+scope	Fields	scope.Fields()
+scope	GetModelStruct	scope.GetModelStruct()
+scope	Quote	scope.Quote(field.DBName)
+scope	Quote	scope.Quote(relationship.ForeignDBNames[idx])
+scope	Quote	scope.Quote(scope.Search.tableName)
+scope	Quote	scope.Quote(str)
+scope	Quote	scope.Quote(column)
+scope	Quote	scope.Quote(scope.PrimaryKey())
+scope	InstanceSet	"scope.InstanceSet(\"gorm:blank_columns_with_default_value\", blankColumnsWithDefaultValue)"
+scope	InstanceSet	"scope.InstanceSet(\"gorm:update_attrs\", updateAttrs)"
+scope	InstanceSet	"scope.InstanceSet(\"gorm:started_transaction\", true)"
+scope	InstanceSet	"scope.InstanceSet(\"skip_bindvar\", true)"
+scope	InstanceSet	"scope.InstanceSet(\"gorm:update_attrs\", updateMaps)"
+scope	InstanceSet	"scope.InstanceSet(\"row_query_result\", result)"
+scope	changeableField	scope.changeableField(foreignField)
+scope	changeableField	scope.changeableField(field)
+scope	IndirectValue	scope.IndirectValue()
+scope	New	scope.New(results.Interface())
+scope	New	scope.New(reflect.New(field.Struct.Type).Interface())
+scope	New	scope.New(field.Addr().Interface())
+scope	New	scope.New(reflect.New(field.Type()).Interface())
+scope	trace	scope.trace(NowFunc())
+scope	Raw	scope.Raw(generatedSQL)
+scope	Raw	"scope.Raw(fmt.Sprintf(\"SELECT %v FROM %v %v\", scope.selectSQL(), scope.QuotedTableName(), scope.CombinedConditionSql()))"
+scope	Raw	"scope.Raw(fmt.Sprintf(
+	\"INSERT INTO %v (%v) VALUES (%v)%v%v\",
+	scope.QuotedTableName(),
+	strings.Join(columns, \",\"),
+	strings.Join(placeholders, \",\"),
+	addExtraSpaceIfExist(extraOption),
+	addExtraSpaceIfExist(lastInsertIDReturningSuffix),
+))"
+scope	Raw	scope.Raw(scope.CombinedConditionSql())
+scope	Raw	"scope.Raw(fmt.Sprintf(
+	\"INSERT INTO %v %v%v%v\",
+	quotedTableName,
+	scope.Dialect().DefaultValueStr(),
+	addExtraSpaceIfExist(extraOption),
+	addExtraSpaceIfExist(lastInsertIDReturningSuffix),
+))"
+scope	callCallbacks	scope.callCallbacks(s.parent.callbacks.creates)
+scope	callCallbacks	scope.callCallbacks(s.parent.callbacks.updates)
+scope	callCallbacks	scope.callCallbacks(scope.db.parent.callbacks.rowQueries)
+scope	prepareQuerySQL	scope.prepareQuerySQL()
+scope	NewDB	scope.NewDB()
+scope	updatedAttrsWithValues	"scope.updatedAttrsWithValues(clause[\"query\"])"
+scope	updatedAttrsWithValues	scope.updatedAttrsWithValues(foreignKeyMap)
+scope	updatedAttrsWithValues	scope.updatedAttrsWithValues(scope.Search.assignAttrs)
+scope	updatedAttrsWithValues	scope.updatedAttrsWithValues(scope.Search.initAttrs)
+scope	TableName	scope.TableName()
+scope	scan	scope.scan(rows, columns, scope.Fields())
+scope	scan	scope.scan(rows, columns, append(fields, joinTableFields...))
+scope	scan	scope.scan(rows, columns, scope.New(elem.Addr().Interface()).Fields())
+scope	QuotedTableName	scope.QuotedTableName()
+scope	PrimaryKeyZero	scope.PrimaryKeyZero()
+sent	eachPartition	"sent.eachPartition(func(topic string, partition int32, pSet *partitionSet) {
+	bp.parent.returnErrors(pSet.msgs, err)
+})"
+sent	eachPartition	"sent.eachPartition(func(topic string, partition int32, pSet *partitionSet) {
+	block := response.GetBlock(topic, partition)
+	if block == nil {
+
+		return
+	}
+
+	switch block.Err {
+	case ErrInvalidMessage, ErrUnknownTopicOrPartition, ErrLeaderNotAvailable, ErrNotLeaderForPartition,
+		ErrRequestTimedOut, ErrNotEnoughReplicas, ErrNotEnoughReplicasAfterAppend:
+		Logger.Printf(\"producer/broker/%d state change to [retrying] on %s/%d because %v\\n\",
+			bp.broker.ID(), topic, partition, block.Err)
+		if bp.currentRetries[topic] == nil {
+			bp.currentRetries[topic] = make(map[int32]error)
+		}
+		bp.currentRetries[topic][partition] = block.Err
+
+		bp.parent.retryMessages(bp.buffer.dropPartition(topic, partition), block.Err)
+		bp.parent.retryBatch(topic, partition, pSet, block.Err)
+	}
+})"
+sent	eachPartition	"sent.eachPartition(func(topic string, partition int32, pSet *partitionSet) {
+	bp.parent.retryMessages(pSet.msgs, err)
+})"
+sent	eachPartition	"sent.eachPartition(func(topic string, partition int32, pSet *partitionSet) {
+	if response == nil {
+
+		bp.parent.returnSuccesses(pSet.msgs)
+		return
+	}
+
+	block := response.GetBlock(topic, partition)
+	if block == nil {
+		bp.parent.returnErrors(pSet.msgs, ErrIncompleteResponse)
+		return
+	}
+
+	switch block.Err {
+
+	case ErrNoError:
+		if bp.parent.conf.Version.IsAtLeast(V0_10_0_0) && !block.Timestamp.IsZero() {
+			for _, msg := range pSet.msgs {
+				msg.Timestamp = block.Timestamp
+			}
+		}
+		for i, msg := range pSet.msgs {
+			msg.Offset = block.Offset + int64(i)
+		}
+		bp.parent.returnSuccesses(pSet.msgs)
+
+	case ErrDuplicateSequenceNumber:
+		bp.parent.returnSuccesses(pSet.msgs)
+
+	case ErrInvalidMessage, ErrUnknownTopicOrPartition, ErrLeaderNotAvailable, ErrNotLeaderForPartition,
+		ErrRequestTimedOut, ErrNotEnoughReplicas, ErrNotEnoughReplicasAfterAppend:
+		retryTopics = append(retryTopics, topic)
+
+	default:
+		bp.parent.returnErrors(pSet.msgs, block.Err)
+	}
+})"
+server	Unlock	server.Unlock()
+server	Lock	server.Lock()
+server	Close	server.Close()
+session	Close	session.Close()
+session	SetMode	session.SetMode(Strong, true)
+session	SetMode	session.SetMode(consistency, true)
+session	SetMode	session.SetMode(Strong, false)
+session	prepareQuery	session.prepareQuery(&op)
+shard	IsDown	shard.IsDown()
+socket	Unlock	socket.Unlock()
+socket	Lock	socket.Lock()
+socket	Release	socket.Release()
+socket	kill	"socket.kill(errors.New(\"resetNonce: \"+err.Error()), true)"
+socket	kill	"socket.kill(errors.New(\"Failed to unmarshal nonce: \"+err.Error()), true)"
+socket	kill	"socket.kill(errors.New(\"getNonce: \"+err.Error()), true)"
+socket	kill	socket.kill(err, true)
+socket	kill	socket.kill(errors.New(msg), true)
+socket	kill	"socket.kill(errors.New(\"Closed explicitly\"), false)"
+socket	dropAuth	socket.dropAuth(cred.Source)
+socket	ServerInfo	socket.ServerInfo()
+socket	updateDeadline	socket.updateDeadline(readDeadline)
+socket	updateDeadline	socket.updateDeadline(writeDeadline)
+socket	loginRun	"socket.loginRun(cred.Source, &cmd, &res, func() error {
+	if !res.Ok {
+		return errors.New(res.ErrMsg)
+	}
+	socket.Lock()
+	socket.dropAuth(cred.Source)
+	socket.creds = append(socket.creds, cred)
+	socket.Unlock()
+	return nil
+})"
+sort	Sort	sort.Sort(LabelPairSorter(lpsFromDesc))
+sort	Sort	sort.Sort(quantSort(qs))
+sort	Sort	sort.Sort(clusterSlotSlice(c.slots))
+sort	Sort	sort.Sort(s)
+sort	Sort	sort.Sort(int32Slice(ret))
+sort	Sort	sort.Sort(keys)
+sort	Strings	sort.Strings(kvs)
+sort	Strings	sort.Strings(columns)
+sort	Strings	sort.Strings(keys)
+sort	Strings	sort.Strings(labelNames)
+sort	Strings	sort.Strings(names)
+st	String	st.String()
+st	exec	st.exec(args)
+st	exec	st.exec(v)
+stats	conn	stats.conn(+1, true)
+stats	conn	stats.conn(+1, master)
+stats	conn	stats.conn(-1, false)
+stats	socketRefs	stats.socketRefs(-1)
+stats	socketRefs	stats.socketRefs(+1)
+statsMutex	Lock	statsMutex.Lock()
+statsMutex	Unlock	statsMutex.Unlock()
+strconv	Itoa	strconv.Itoa(line)
+strconv	Itoa	strconv.Itoa(int(buf[0]))
+strconv	Itoa	strconv.Itoa(int(buf[3]))
+strconv	Itoa	strconv.Itoa(frameType)
+strconv	Itoa	strconv.Itoa(s)
+strconv	Itoa	strconv.Itoa(n.kind)
+strconv	ParseUint	strconv.ParseUint(cmd.Val(), 10, 64)
+strconv	ParseUint	strconv.ParseUint(val, 10, 64)
+strconv	ParseUint	strconv.ParseUint(j.data.(json.Number).String(), 10, 64)
+strconv	ParseUint	strconv.ParseUint(v[first+1:last], 10, 64)
+strconv	ParseUint	strconv.ParseUint(v[first+1:], 10, 64)
+strconv	FormatInt	strconv.FormatInt(int64(rsv), 16)
+strconv	FormatInt	strconv.FormatInt(int64(cn.namei), 10)
+strconv	FormatInt	strconv.FormatInt(values[5].(int64), 10)
+strings	HasPrefix	"strings.HasPrefix(s, \"mongodb://\")"
+strings	HasPrefix	"strings.HasPrefix(commandTag, \"INSERT \")"
+strings	HasPrefix	"strings.HasPrefix(strings.ToLower(tokenString), \"bearer \")"
+strings	HasPrefix	strings.HasPrefix(l, reservedLabelPrefix)
+strings	HasPrefix	"strings.HasPrefix(host, \"*.\")"
+strings	HasPrefix	strings.HasPrefix(foreignKey, associationType)
+strings	Join	"strings.Join([]string{namespace, subsystem, name}, \"_\")"
+strings	Join	"strings.Join(results, \",\")"
+strings	Join	"strings.Join(primaryConditions, \" AND \")"
+strings	Join	"strings.Join(sqls, \" AND \")"
+strings	Join	"strings.Join(errs, \", \")"
+strings	Join	"strings.Join(conditions, \" AND \")"
+strings	Contains	"strings.Contains(host, \"/\")"
+strings	Contains	strings.Contains(function, contains)
+strings	Contains	"strings.Contains(relativePath, \":\")"
+strings	Contains	"strings.Contains(block.Headers[\"Proc-Type\"], \"ENCRYPTED\")"
+strings	Contains	"strings.Contains(c.Endpoint.AuthURL, \"?\")"
+strings	Contains	strings.Contains(listValue.String(), elementValue.String())
+strings	Split	"strings.Split(expr, \"/\")"
+strings	Split	"strings.Split(sourceAddrs, \",\")"
+strings	Split	"strings.Split(part, \";\")"
+strings	Split	"strings.Split(rangeAndStep[0], \"-\")"
+strings	Split	"strings.Split(tagStr, \"|\")"
+strings	Split	"strings.Split(hosts, \",\")"
+strings	ToLower	strings.ToLower(m)
+strings	ToLower	strings.ToLower(value)
+strings	ToLower	strings.ToLower(lvl)
+strings	ToLower	"strings.ToLower(c.requestHeader(\"Upgrade\"))"
+strings	ToLower	strings.ToLower(path[:len(n.path)])
+strings	ToLower	strings.ToLower(path)
+strings	Index	"strings.Index(str, \".\")"
+strings	Index	"strings.Index(coll.Name, \".oplog.$\")"
+strings	Index	"strings.Index(v, \"CORE_CHAINCODE_ID_NAME=\")"
+strings	Index	strings.Index(fullPath, pathSeg)
+strings	Index	"strings.Index(scope.Search.tableName, \" \")"
+strings	Index	"strings.Index(string(field.Tag), \":\")"
+strings	EqualFold	"strings.EqualFold(resp.Header.Get(\"Connection\"), \"upgrade\")"
+strings	EqualFold	"strings.EqualFold(t.TokenType, \"bearer\")"
+strings	EqualFold	"strings.EqualFold(t.TokenType, \"basic\")"
+strings	EqualFold	"strings.EqualFold(resp.Header.Get(\"Upgrade\"), \"websocket\")"
+strings	EqualFold	"strings.EqualFold(t.TokenType, \"mac\")"
+strings	EqualFold	"strings.EqualFold(q[:4], \"COPY\")"
+strings	TrimSpace	strings.TrimSpace(additionalType)
+strings	HasSuffix	strings.HasSuffix(host, zone)
+strings	HasSuffix	"strings.HasSuffix(queryStr, \"as \"+column)"
+strings	HasSuffix	"strings.HasSuffix(queryStr, \"as \"+scope.Quote(column))"
+strings	HasSuffix	"strings.HasSuffix(zone, \".\")"
+strings	HasSuffix	"strings.HasSuffix(host, \".\")"
+stub	MockTransactionEnd	stub.MockTransactionEnd(uuid)
+stub	MockTransactionStart	stub.MockTransactionStart(uuid)
+subtle	ConstantTimeCompare	subtle.ConstantTimeCompare([]byte(given), []byte(actual))
+subtle	ConstantTimeCompare	subtle.ConstantTimeCompare(secret[:], curve25519Zeros[:])
+subtle	ConstantTimeCompare	subtle.ConstantTimeCompare([]byte(iss), []byte(cmp))
+subtle	ConstantTimeCompare	subtle.ConstantTimeCompare([]byte(actual), []byte(actual))
+subtle	ConstantTimeCompare	subtle.ConstantTimeCompare([]byte(aud), []byte(cmp))
+subtle	ConstantTimeCompare	subtle.ConstantTimeCompare(s.macResult, mac)
+t	Kind	t.Kind()
+t	Year	t.Year()
+t	Len	t.Len()
+t	printPacket	t.printPacket(p, false)
+t	printPacket	t.printPacket(packet, true)
+t	printPacket	t.printPacket(p, true)
+t	requestKeyExchange	t.requestKeyExchange()
+t	setModReq	t.setModReq(req, nil)
+t	setModReq	t.setModReq(req, req2)
+ticker	Stop	ticker.Stop()
+time	Duration	time.Duration(timeout)
+time	Duration	time.Duration(1)
+time	Duration	time.Duration(throttleTime)
+time	Duration	time.Duration(n)
+time	Duration	time.Duration(throttle)
+time	Duration	time.Duration(spec.ExpireAfter)
+time	Sleep	time.Sleep(delay)
+time	Sleep	time.Sleep(c.retryBackoff(attempt))
+time	Sleep	time.Sleep(reconnectInterval)
+time	Sleep	time.Sleep(1e8)
+time	Sleep	time.Sleep(2 * time.Second)
+time	Sleep	time.Sleep(syncShortDelay)
+time	Now	time.Now()
+time	Unix	time.Unix((*v / 1000), 0)
+time	Unix	time.Unix(sec, microsec*1000)
+time	Unix	time.Unix(0, (*v * 1000000))
+timer	Stop	timer.Stop()
+u	returnError	"u.returnError(w, r, http.StatusMethodNotAllowed, badHandshake+\"request method is not GET\")"
+u	returnError	"u.returnError(w, r, http.StatusInternalServerError, \"websocket: response does not implement http.Hijacker\")"
+u	returnError	u.returnError(w, r, http.StatusInternalServerError, err.Error())
+u	returnError	"u.returnError(w, r, http.StatusForbidden, \"websocket: request origin not allowed by Upgrader.CheckOrigin\")"
+u	returnError	"u.returnError(w, r, http.StatusBadRequest, badHandshake+\"'upgrade' token not found in 'Connection' header\")"
+u	returnError	"u.returnError(w, r, http.StatusBadRequest, \"websocket: unsupported version: 13 not found in 'Sec-Websocket-Version' header\")"
+unicode	IsSpace	unicode.IsSpace(r)
+utf8	ValidString	utf8.ValidString(str)
+utf8	ValidString	utf8.ValidString(*labelPair.Value)
+utf8	ValidString	utf8.ValidString(in)
+utf8	ValidString	utf8.ValidString(closeText)
+utf8	ValidString	utf8.ValidString(val)
+v	Set	v.Set(zero)
+v	Set	v.Set(float64(time.Now().UnixNano()) / 1e9)
+v	Set	"v.Set(\"scope\", strings.Join(c.Scopes, \" \"))"
+v	Set	"v.Set(\"state\", state)"
+v	Set	"v.Set(\"redirect_uri\", c.RedirectURL)"
+v	Kind	v.Kind()
+v	NumField	v.NumField()
+v	Add	v.Add(val * -1)
+v	Add	v.Add(-1)
+v	Add	v.Add(1)
+v	Len	v.Len()
+vErr	valid	vErr.valid()
+value	Kind	value.Kind()
+values	Encode	values.Encode()
+values	Len	values.Len()
+w	int32	w.int32(cn.processID)
+w	int32	w.int32(-1)
+w	int32	w.int32(80877102)
+w	int32	w.int32(0)
+w	int32	w.int32(len(b))
+w	int32	w.int32(cn.secretKey)
+w	string	w.string(st.name)
+w	string	"w.string(\"md5\" + md5s(md5s(o[\"password\"]+o[\"user\"])+s))"
+w	string	"w.string(o[\"password\"])"
+w	string	w.string(v)
+w	string	w.string(k)
+w	string	"w.string(\"\")"
+w	endMessage	"w.endMessage(c.writeFatal(errors.New(\"websocket: internal error, extra used in client mode\")))"
+w	endMessage	w.endMessage(err)
+w	endMessage	w.endMessage(errInvalidControlFrame)
+w	endMessage	w.endMessage(errWriteClosed)
+w	Write	w.Write(buf)
+w	Write	w.Write(buf.Bytes())
+w	Write	w.Write(lengthBytes[:])
+w	Write	w.Write(s)
+w	Broadcast	w.Broadcast()
+w	byte	w.byte('S')
+w	byte	w.byte(0)
+w	WriteHeaderNow	w.WriteHeaderNow()
+wg	Add	wg.Add(1)
+wg	Add	wg.Add(len(r.collectorsByID))
+wg	Done	wg.Done()
+wg	Wait	wg.Wait()
