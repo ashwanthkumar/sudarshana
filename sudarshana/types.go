@@ -43,6 +43,7 @@ type Func struct {
 	Offset    token.Pos `json:"offset"`
 	CScope    string    `json:"scope"`
 	Type      string    `json:"type"`
+	Code      string    `json:"code"`
 }
 
 func (v Func) Pos() token.Pos {
@@ -68,6 +69,7 @@ type Variable struct {
 	Offset    token.Pos `json:"offset"`
 	CScope    string    `json:"scope"`
 	Type      string    `json:"type"`
+	Code      string    `json:"code"`
 }
 
 func (v Variable) Pos() token.Pos {
@@ -91,6 +93,7 @@ type Value struct {
 	Offset token.Pos `json:"offset"`
 	CScope string    `json:"scope"`
 	Type   string    `json:"type"`
+	Code   string    `json:"code"`
 }
 
 func (v Value) Pos() token.Pos {
@@ -114,6 +117,7 @@ type Assignment struct {
 	Offset token.Pos `json:"offset"`
 	CScope string    `json:"scope"`
 	Type   string    `json:"type"`
+	Code   string    `json:"code"`
 }
 
 func (v Assignment) Pos() token.Pos {
@@ -140,6 +144,7 @@ type PropertyAccessInStruct struct {
 	Offset   token.Pos `json:"offset"`
 	CScope   string    `json:"scope"`
 	Type     string    `json:"type"`
+	Code     string    `json:"code"`
 }
 
 func (v PropertyAccessInStruct) Pos() token.Pos {
@@ -156,6 +161,7 @@ type ConstructStruct struct {
 	CScope       string            `json:"scope"`
 	Type         string            `json:"type"`
 	Offset       token.Pos         `json:"offset"`
+	Code         string            `json:"code"`
 }
 
 func (v ConstructStruct) Pos() token.Pos {

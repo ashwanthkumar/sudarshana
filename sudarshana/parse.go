@@ -16,6 +16,13 @@ import (
 	parseutil "gopkg.in/src-d/go-parse-utils.v1"
 )
 
+// Used while resolving paths using Guru
+var importMappingCache map[string]string
+
+func init() {
+	importMappingCache = make(map[string]string)
+}
+
 type Declaration struct {
 	Label        string        `json:"label"`
 	Type         string        `json:"type"`
@@ -87,6 +94,7 @@ func parsefile(packageName string, directory string, filename string) {
 		File:    filename,
 	}
 
+	// source.Exprs = ResolvePathsUsingGuru(expressions, inputFile)
 	source.Exprs = expressions
 
 	// fmt.Printf("Length=%d\n", len(expressions))
@@ -97,6 +105,37 @@ func parsefile(packageName string, directory string, filename string) {
 		fmt.Printf("%s\n", string(outAsJSON))
 	}
 	// }
+}
+
+func ResolvePathsUsingGuru(exprs []Expr, fullPathToFile string) []Expr {
+	updatedExprs := make([]Expr, 0)
+	for _, expr := range exprs {
+		switch e := expr.(type) {
+		case Func:
+			existingReference := e.Reference
+			cacheValue, alreadyInCache := importMappingCache[existingReference]
+			if alreadyInCache {
+				e.Reference = cacheValue
+			} else {
+				// TODO: Invoke Guru and see if we can get the canonical name of this reference
+				query := fmt.Sprintf("%s:#%d", fullPathToFile, e.Pos())
+				packageReference := guru_describe(query)
+				// fmt.Printf("query=%s\noutput=%q\n", query, packageReference)
+				if nil != packageReference && nil != packageReference.Package {
+					if "" != packageReference.Package.Path {
+						resolvedPath := resolveGuruPath(packageReference.Package.Path)
+						importMappingCache[existingReference] = resolvedPath
+						e.Reference = resolvedPath
+					}
+				}
+			}
+			updatedExprs = append(updatedExprs, e)
+		default:
+			updatedExprs = append(updatedExprs, e)
+		}
+	}
+
+	return updatedExprs
 }
 
 type ASTVisitor struct {
@@ -140,7 +179,7 @@ func (a *ASTVisitor) Visit(node ast.Node) ast.Visitor {
 				a.currentFunc = ""
 			}
 
-			exp := parseNode2(node, a.currentFunc, a.fullPathToFile)
+			exp := parseNode2(node, a.fset, a.currentFunc, a.fullPathToFile)
 			if nil != exp {
 				a.NewExprs = append(a.NewExprs, exp)
 				for _, pos := range exp.AllPos() {
@@ -189,13 +228,7 @@ func asBasicLit(in ast.Node) (*ast.BasicLit, bool) {
 	}
 }
 
-var importMappingCache map[string]string
-
-func init() {
-	importMappingCache = make(map[string]string)
-}
-
-func parseNode2(node ast.Node, scope string, fullPathToFile string) Expr {
+func parseNode2(node ast.Node, fset *token.FileSet, scope string, fullPathToFile string) Expr {
 	// expressions := []Expr{}
 	// fmt.Printf("%s -- %v\n", reflect.TypeOf(node), node)
 	switch expr := node.(type) {
@@ -260,13 +293,16 @@ func parseNode2(node ast.Node, scope string, fullPathToFile string) Expr {
 
 		// attempt to parse the values
 		if nil == rhs {
-			rhs = parseNode2(expr.Rhs[0], scope, fullPathToFile)
+			rhs = parseNode2(expr.Rhs[0], fset, scope, fullPathToFile)
 		}
+		buf := &bytes.Buffer{}
+		format.Node(buf, fset, expr)
 		assignment := Assignment{
 			Lefts:  leftExprs,
 			CScope: scope,
 			Type:   "assignment",
 			Offset: expr.Pos(),
+			Code:   buf.String(),
 		}
 		if nil != rhs {
 			assignment.Right = rhs
@@ -275,32 +311,19 @@ func parseNode2(node ast.Node, scope string, fullPathToFile string) Expr {
 		return assignment
 
 	case *ast.CallExpr:
+		buf := &bytes.Buffer{}
+		format.Node(buf, fset, expr)
 		f := Func{
 			Type:   "function",
 			CScope: scope,
 			Offset: expr.Pos(),
+			Code:   buf.String(),
 		}
 		funSelector, ok := asSelectorExpr(expr.Fun)
 		if ok {
 			xAsIdent, ok := funSelector.X.(*ast.Ident)
 			if ok {
 				f.Reference = xAsIdent.String()
-				cacheValue, alreadyInCache := importMappingCache[xAsIdent.String()]
-				if alreadyInCache {
-					f.Reference = cacheValue
-				} else {
-					// TODO: Invoke Guru and see if we can get the canonical name of this reference
-					query := fmt.Sprintf("%s:#%d", fullPathToFile, funSelector.Pos())
-					packageReference := guru_describe(query)
-					// fmt.Printf("query=%s\noutput=%q\n", query, packageReference)
-					if nil != packageReference && nil != packageReference.Package {
-						if "" != packageReference.Package.Path {
-							resolvedPath := resolveGuruPath(packageReference.Package.Path)
-							importMappingCache[xAsIdent.String()] = resolvedPath
-							f.Reference = resolvedPath
-						}
-					}
-				}
 			}
 			f.Name = funSelector.Sel.String()
 		} else {
@@ -312,15 +335,18 @@ func parseNode2(node ast.Node, scope string, fullPathToFile string) Expr {
 		for _, arg := range expr.Args {
 			switch argExpr := arg.(type) {
 			case *ast.Ident:
+				buf := &bytes.Buffer{}
+				format.Node(buf, fset, argExpr)
 				v := Variable{
 					Type:   "variable",
 					CScope: scope,
 					Name:   argExpr.String(),
 					Offset: argExpr.Pos(),
+					Code:   buf.String(),
 				}
 				f.Args = append(f.Args, v)
 			default:
-				otherExpr := parseNode2(arg, scope, fullPathToFile)
+				otherExpr := parseNode2(arg, fset, scope, fullPathToFile)
 				if nil != otherExpr {
 					f.Args = append(f.Args, otherExpr)
 				}
@@ -329,12 +355,15 @@ func parseNode2(node ast.Node, scope string, fullPathToFile string) Expr {
 		return f
 	case *ast.BasicLit:
 		if "" != scope {
+			buf := &bytes.Buffer{}
+			format.Node(buf, fset, expr)
 			v := Value{
 				Type:   "constant",
 				CScope: scope,
 				TypeOf: expr.Kind.String(),
 				Value:  expr.Value,
 				Offset: expr.Pos(),
+				Code:   buf.String(),
 			}
 			return v
 		}
