@@ -9,6 +9,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -57,7 +58,6 @@ func readAndPopulatePopularPatterns() map[string][]MethodSample {
 			Name: funcName,
 			Code: funcCode,
 		}
-
 		key := fmt.Sprintf("%s#%s", packageName, funcName)
 		existing, _ := popularPatterns[key]
 		popularPatterns[key] = append(existing, method)
@@ -148,6 +148,7 @@ func main() {
 		fmt.Printf("%s\n", packageToUse)
 		indexOfFunc := strings.Index(inputFunc, " func")
 		funcToUse := inputFunc[0:indexOfFunc]
+		fmt.Printf("PackageToUse=%s\n", packageToUse)
 		fmt.Printf("FuncToUse=%s\n", funcToUse)
 
 		key := fmt.Sprintf("%s#%s", packageToUse, funcToUse)
@@ -175,7 +176,16 @@ func packageOf(inputFile string) *GuruWhatResult {
 	var result *GuruWhatResult
 	json.Unmarshal(out.Bytes(), &result)
 	if result.Package == "" {
-		return &GuruWhatResult{}
+		// Guess the package name with regard to our GoPATH
+		fmt.Printf("Guess package name\n")
+		gopath := os.Getenv("GOPATH")
+		fmt.Printf("Checking GOPATH=%s\n", gopath)
+		packageName := strings.Replace(inputFile, gopath+"/src/", "", -1)
+		packageName = filepath.Dir(packageName)
+		return &GuruWhatResult{
+			Srcdir:  filepath.Dir(inputFile),
+			Package: packageName,
+		}
 	}
 	// TODO: result now has the Package which should be used to identify the sorted list of methods for the package
 	// output, err := json.Marshal(result)

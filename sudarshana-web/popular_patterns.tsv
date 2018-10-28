@@ -1,3 +1,4 @@
+github.com/ashwanthkumar/devmerge_2k18/demo-code/foo	CheckID	"foo.CheckID(person.Id, person.Name)"
 Logger	Printf	"Logger.Printf(\"producer/leader/%s/%d state change to [retrying-%d]\\n\", pp.topic, pp.partition, hwm)"
 Logger	Printf	"Logger.Printf(\"client/coordinator request to broker %s failed: %s\\n\", broker.Addr(), err)"
 Logger	Printf	"Logger.Printf(\"producer/broker/%d state change to [closed] on %s/%d\\n\",
