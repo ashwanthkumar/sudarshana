@@ -17,3 +17,7 @@ $ wget "https://data.stackexchange.com/stackoverflow/revision/913091/1136390/dum
 $ ... extract the JSON content alone in the file
 $ jq .resultSets[].rows[] dump-question-answers-for-a-tag-with-title | jq -c '{"title": .[0], "qId": .[1], "aId": .[2], "tags": .[3], "qScore": .[4], "aScore": .[5], "question": .[6], "answer": .[7], "views": .[8], "nrOfCommentsInAnswer": .[9], "qDate": .[10], "aDate": .[11]}' > go-so-questions-and-all-answers-with-title.json
 ```
+
+### Authors
+Ashwanth Kumar
+Mohan
