@@ -19,5 +19,5 @@ $ jq .resultSets[].rows[] dump-question-answers-for-a-tag-with-title | jq -c '{"
 ```
 
 ### Authors
-Ashwanth Kumar
-Mohan
+- Ashwanth Kumar
+- Mohan
